@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/hiroh-web/static/css/main.f0b969d4.css",
-    "main.js": "/hiroh-web/static/js/main.0a460a00.js",
+    "main.js": "/hiroh-web/static/js/main.275baa13.js",
     "static/js/453.1a54f7e1.chunk.js": "/hiroh-web/static/js/453.1a54f7e1.chunk.js",
     "index.html": "/hiroh-web/index.html",
     "main.f0b969d4.css.map": "/hiroh-web/static/css/main.f0b969d4.css.map",
-    "main.0a460a00.js.map": "/hiroh-web/static/js/main.0a460a00.js.map",
+    "main.275baa13.js.map": "/hiroh-web/static/js/main.275baa13.js.map",
     "453.1a54f7e1.chunk.js.map": "/hiroh-web/static/js/453.1a54f7e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f0b969d4.css",
-    "static/js/main.0a460a00.js"
+    "static/js/main.275baa13.js"
   ]
 }
