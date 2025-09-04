@@ -26,7 +26,7 @@ const FAQSection = ({ isMobile }) => {
 
   const styles = {
     container: {
-      backgroundColor: 'var(--bg-dark)', 
+      backgroundColor: 'var(--bg-secondary)', 
       padding: isMobile ? '2rem 0' : '4rem 0'
     },
     content: {

@@ -45,7 +45,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
       marginBottom: '1rem'
     },
     description: {
-      color: 'var(--text-secondary)', 
+      color: 'var(--text-gray)', 
       lineHeight: '1.5'
     }
   };

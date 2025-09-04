@@ -25,7 +25,7 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
     },
     heroContent: {
       padding: isMobile ? '0 2rem' : '0',
-      marginTop: isMobile ? '60px' : '11rem',
+      marginTop: isMobile ? 'calc(60px + 1rem)' : '11rem',
       position: 'relative',
       zIndex: 2,
       width: '100%',

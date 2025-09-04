@@ -29,8 +29,8 @@ const PrivacySection = (isMobile) => {
   ];
 
   return (
-    <section style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-white)', marginTop: '-1rem' }}>
-      <div className="section">
+    <section className="section" style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-white)', marginTop: '-1rem' }}>
+      <div>
         <h2 style={{ textAlign: 'center', marginBottom: '3rem', color: 'var(--text-white)' }}>
           You Don't Need To Change Your Phone Habits to Gain Privacy
         </h2>

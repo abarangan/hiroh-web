@@ -32,7 +32,7 @@ const EverydayUseSection = ({ isMobile }) => {
     subtitle: {
       fontSize: '1.25rem', 
       textAlign: 'center', 
-      color: 'var(--text-secondary)', 
+      color: 'var(--text-gray)', 
       maxWidth: '800px', 
       margin: isMobile ? '0 auto 2rem' : '0 auto 4rem', 
       lineHeight: '1.6',
@@ -71,7 +71,8 @@ const EverydayUseSection = ({ isMobile }) => {
 
   return (
     <section className="section">
-      <h2 className="section-title" style={{ textAlign: 'center' }}>From Everyday Phone to Privacy Phone in One Click</h2>
+      <div>
+      <h2 className="section-title" style={{ textAlign: 'center',color: 'var(--text-primary)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
       <p style={styles.subtitle}>
         Seamlessly transition between your everyday needs and complete privacy protection.
       </p>
@@ -91,6 +92,7 @@ const EverydayUseSection = ({ isMobile }) => {
             </ul>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   const styles = {
     footer: {
-      backgroundColor: 'var(--color-black)',
+      backgroundColor: 'var(--bg-secondary)',
       color: 'var(--text-white)',
       padding: '4rem 2rem',
       textAlign: 'center'

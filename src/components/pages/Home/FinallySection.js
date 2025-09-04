@@ -35,7 +35,7 @@ const FinallySection = ({ isMobile }) => {
     subtitle: {
       textAlign: 'center',
       fontSize: isMobile ? '1rem' : '1.25rem',
-      color: 'var(--text-secondary)',
+      color: 'var(--text-gray)',
       maxWidth: '900px',
       margin: isMobile ? '0 auto 2rem' : '0 auto 4rem', 
       lineHeight: '1.6'
@@ -61,7 +61,7 @@ const FinallySection = ({ isMobile }) => {
     },
     cardDescription: {
       fontSize: isMobile ? '0.9rem' : '0.95rem',
-      color: 'var(--text-secondary)',
+      color: 'var(--text-gray)',
       lineHeight: '1.5'
     }
   };

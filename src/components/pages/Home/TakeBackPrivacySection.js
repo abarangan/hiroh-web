@@ -31,8 +31,6 @@ const TakeBackPrivacySection = ({ isMobile }) => {
       maxWidth: '900px'
     },
     title: {
-      fontSize: isMobile ? '2.5rem' : '3.5rem',
-      fontWeight: 'bold',
       marginBottom: '1.5rem'
     },
     subtitle: {

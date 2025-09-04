@@ -1,12 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* CSS Color Variable Definitions */
 :root {
   /* Base Colors */
   --color-primary-teal: #0d9488;
   --color-primary-teal-hover: #0f766e;
+  --color-secondary: #1f2937;
   --color-black: #111827;
   --color-white: #ffffff;
   --color-transparent: transparent;
@@ -27,7 +25,6 @@
   --color-dark-primary: #1f1f1f;;
   --color-dark-secondary: #0f172a;
   --color-dark-tertiary: #0b1220;
-  --color-dark-quaternary: #1f1f1f;
   
   /* Accent Colors */
   --color-green: #10b981;
@@ -66,8 +63,7 @@
   
   /* Text Color Shorthands */
   --text-primary: var(--color-black);
-  --text-secondary: var(--color-gray-500);
-  --text-tertiary: var(--color-gray-600);
+  --text-gray: var(--color-gray-600);
   --text-white: var(--color-white);
   --text-white-90: var(--color-white-90);
   --text-white-85: var(--color-white-85);
@@ -77,6 +73,7 @@
   --bg-white: var(--color-white);
   --bg-dark: var(--color-dark-primary);
   --bg-teal: var(--color-primary-teal);
+  --bg-secondary: var(--color-secondary);
 }
 
 body {
@@ -96,7 +93,7 @@ body {
 
 /* Typography - Mobile First */
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -168,7 +165,10 @@ h3 {
 
   .section {
     padding: 8rem 2rem;
-    max-width: 1200px;
+    > div {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 }
 
