@@ -1,17 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Header = ({
-  currentPage,
-  setCurrentPage,
-  hoveredMenu,
-  setHoveredMenu,
-  selectedSegment,
-  setSelectedSegment,
-  mobileMenuOpen,
-  setMobileMenuOpen,
-  isMobile,
-  styles
-}) => {
+const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) => {
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  console.log(isMobile);
+
+  const styles = {
+    nav: {
+      position: 'fixed',
+      top: 0,
+      width: '100%',
+      zIndex: 50,
+      backgroundColor: 'var(--color-white-95)',
+      backdropFilter: 'blur(10px)',
+      borderBottom: '1px solid var(--color-gray-200)',
+    },
+    navContent: {
+      maxWidth: isMobile ? '100%' : '1200px',
+      padding: isMobile ? '0 1rem' : '1rem 2rem',
+      height: isMobile ? '60px' : 'auto',
+      margin: '0 auto',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      boxSizing: 'border-box'
+    },
+    navLinks: {
+      display: 'flex',
+      gap: '2rem',
+      listStyle: 'none',
+      margin: 0,
+      padding: 0
+    },
+    navLink: {
+      color: 'var(--text-secondary)',
+      backgroundColor: 'var(--color-transparent)',
+      border: 'none',
+      cursor: 'pointer',
+      fontWeight: '500',
+      fontSize: '0.875rem',
+      textTransform: 'uppercase',
+      letterSpacing: '0.05em',
+      transition: 'color 0.2s',
+      fontFamily: 'inherit'
+    },
+    navLinkActive: {
+      color: 'var(--text-primary)'
+    },
+    submenu: {
+      position: 'absolute',
+      top: '100%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      backgroundColor: 'var(--bg-white)',
+      boxShadow: '0 10px 30px var(--color-black-15)',
+      borderRadius: '0.75rem',
+      padding: '0.5rem 0',
+      minWidth: '220px',
+      marginTop: '0',
+      zIndex: 100,
+      border: '1px solid var(--color-gray-200)'
+    },
+    submenuItem: {
+      display: 'block',
+      width: '100%',
+      padding: '0.875rem 1.5rem',
+      textAlign: 'left',
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'var(--color-gray-700)',
+      fontSize: '0.925rem',
+      fontFamily: 'inherit',
+      transition: 'all 0.2s',
+      borderLeft: '3px solid var(--color-transparent)'
+    },
+    hamburger: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '30px',
+      height: '30px',
+      cursor: 'pointer',
+    },
+    hamburgerLine: {
+      width: '20px',
+      height: '2px',
+      backgroundColor: 'var(--color-gray-700)',
+      margin: '2px 0',
+      transition: 'all 0.3s ease'
+    }
+  };
+
   return (
     <>
       {/* Navigation */}
@@ -75,78 +157,32 @@ const Header = ({
                   onMouseEnter={() => setHoveredMenu('phone')}
                   onMouseLeave={() => setHoveredMenu(null)}
                 >
-                  <button
-                    onClick={() => {
-                      setSelectedSegment('govt-military');
-                      setCurrentPage('phone');
-                      setHoveredMenu(null);
-                    }}
-                    style={styles.submenuItem}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-gray-100)';
-                      e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-transparent)';
-                      e.target.style.borderLeftColor = 'var(--color-transparent)';
-                    }}
-                  >
-                    Government and Military
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedSegment('business');
-                      setCurrentPage('phone');
-                      setHoveredMenu(null);
-                    }}
-                    style={styles.submenuItem}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-gray-100)';
-                      e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-transparent)';
-                      e.target.style.borderLeftColor = 'var(--color-transparent)';
-                    }}
-                  >
-                    Business
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedSegment('journalists');
-                      setCurrentPage('phone');
-                      setHoveredMenu(null);
-                    }}
-                    style={styles.submenuItem}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-gray-100)';
-                      e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-transparent)';
-                      e.target.style.borderLeftColor = 'var(--color-transparent)';
-                    }}
-                  >
-                    Journalists
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedSegment('individuals');
-                      setCurrentPage('phone');
-                      setHoveredMenu(null);
-                    }}
-                    style={styles.submenuItem}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-gray-100)';
-                      e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'var(--color-transparent)';
-                      e.target.style.borderLeftColor = 'var(--color-transparent)';
-                    }}
-                  >
-                    Individuals
-                  </button>
+                  {[
+                    { key: 'govt-military', label: 'Government and Military' },
+                    { key: 'business', label: 'Business' },
+                    { key: 'journalists', label: 'Journalists' },
+                    { key: 'individuals', label: 'Individuals' }
+                  ].map(item => (
+                    <button
+                      key={item.key}
+                      onClick={() => {
+                        setSelectedSegment(item.key);
+                        setCurrentPage('phone');
+                        setHoveredMenu(null);
+                      }}
+                      style={styles.submenuItem}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = 'var(--color-gray-100)';
+                        e.target.style.borderLeftColor = 'var(--color-primary-teal)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = 'var(--color-transparent)';
+                        e.target.style.borderLeftColor = 'var(--color-transparent)';
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
                 </div>
               )}
             </li>
@@ -188,44 +224,22 @@ const Header = ({
           {/* Mobile Hamburger Icon */}
           {isMobile && (
             <div
-              style={{
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                cursor: 'pointer',
-                flexShrink: 0,
-                marginRight: '1rem'
-              }}
+              style={styles.hamburger}
               onClick={() => {
                 console.log('Hamburger clicked!');
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
             >
               <div style={{
-                width: '20px',
-                height: '2px',
-                backgroundColor: 'var(--color-gray-700)',
-                margin: '2px 0',
-                transition: 'all 0.3s ease',
+                ...styles.hamburgerLine,
                 transform: mobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'
               }} />
               <div style={{
-                width: '20px',
-                height: '2px',
-                backgroundColor: 'var(--color-gray-700)',
-                margin: '2px 0',
-                transition: 'all 0.3s ease',
+                ...styles.hamburgerLine,
                 opacity: mobileMenuOpen ? 0 : 1
               }} />
               <div style={{
-                width: '20px',
-                height: '2px',
-                backgroundColor: 'var(--color-gray-700)',
-                margin: '2px 0',
-                transition: 'all 0.3s ease',
+                ...styles.hamburgerLine,
                 transform: mobileMenuOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none'
               }} />
             </div>
@@ -235,9 +249,10 @@ const Header = ({
 
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && isMobile && (
-        <div style={{
+        <div 
+        style={{
           position: 'fixed',
-          top: '80px', // Just below your nav bar
+          top: '60px',
           left: 0,
           right: 0,
           backgroundColor: 'var(--color-white-98)',
@@ -368,3 +383,4 @@ const Header = ({
 };
 
 export default Header;
+

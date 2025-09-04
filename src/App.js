@@ -1,207 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './components/shere/Header';
+import Footer from './components/shere/Footer';
+import HeroSection from './components/pages/Home/HeroSection';
+import KeyFeaturesSection from './components/pages/Home/KeyFeaturesSection';
+import PrivacySection from './components/pages/Home/PrivacySection';
+import EverydayUseSection from './components/pages/Home/EverydayUseSection';
+import FAQSection from './components/pages/Home/FAQSection';
+import FinallySection from './components/pages/Home/FinallySection';
+import TakeBackPrivacySection from './components/pages/Home/TakeBackPrivacySection';
 
 const HIROHWebsite = () => {
   const [currentPage, setCurrentPage] = useState('home');
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  const [selectedSegment, setSelectedSegment] = useState('individuals');
-  const [killSwitchActive, setKillSwitchActive] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [isMobile, setIsMobile] = useState(false);
+  const [selectedSegment, setSelectedSegment] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1024);
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
   const styles = {
     container: {
       minHeight: '100vh',
       backgroundColor: 'var(--bg-primary)',
-      fontFamily: '"Montserrat", sans-serif'
+      fontFamily: '"Montserrat", sans-serif',
+      overflowX: 'hidden'
     },
-    nav: {
-      position: 'fixed',
-      top: 0,
-      width: '100%',
-      zIndex: 50,
-      backgroundColor: 'var(--color-white-95)',
-      backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid var(--color-gray-200)',
-      padding: '1rem 0.5rem' // Reduced padding for mobile testing
-    },
-    navContent: {
-      maxWidth: isMobile ? '100%' : '1200px',
-      margin: '0 auto',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: isMobile ? '0 0.5rem' : '0 2rem' // Add some inner padding on mobile
-    },
-    navLinks: {
-      display: 'flex',
-      gap: '2rem',
-      listStyle: 'none',
-      margin: 0,
-      padding: 0
-    },
-    navLink: {
-      color: 'var(--text-secondary)',
-      backgroundColor: 'var(--color-transparent)',
-      border: 'none',
-      cursor: 'pointer',
-      fontWeight: '500',
-      fontSize: '0.875rem',
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em',
-      transition: 'color 0.2s',
-      fontFamily: 'inherit'
-    },
-    navLinkActive: {
-      color: 'var(--text-primary)'
-    },
-    submenu: {
-      position: 'absolute',
-      top: '100%',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      backgroundColor: 'var(--bg-white)',
-      boxShadow: '0 10px 30px var(--color-black-15)',
-      borderRadius: '0.75rem',
-      padding: '0.5rem 0',
-      minWidth: '220px',
-      marginTop: '0',  // Changed from 0.75rem to 0
-      zIndex: 100,
-      border: '1px solid var(--color-gray-200)'
-    },
-    submenuItem: {
-      display: 'block',
-      width: '100%',
-      padding: '0.875rem 1.5rem',
-      textAlign: 'left',
-      background: 'none',
-      border: 'none',
-      cursor: 'pointer',
-      color: 'var(--color-gray-700)',
-      fontSize: '0.925rem',
-      fontFamily: 'inherit',
-      transition: 'all 0.2s',
-      borderLeft: '3px solid var(--color-transparent)'
-    },    
-    hero: {
-      minHeight: '100vh',
+    imageSection: {
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      overflow: 'hidden',
-      backgroundImage: `url(${process.env.PUBLIC_URL}/images/hiroh-phone-4.jpg)`,
+      minHeight: isMobile ? '50vh' : '100vh',
+      backgroundImage: `url(${process.env.PUBLIC_URL}/images/hiroh-phone-9.jpg)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
     },
-    heroOverlay: {
+    imageOverlay: {
       position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: 1
+      inset: 0,
     },
-    heroContent: {
+    imageContent: {
       position: 'relative',
-      zIndex: 2,
-      width: '100%',
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '0 2rem',
-      textAlign: 'center'
-    },
-    heroTitle: {
-      fontSize: '5rem',
-      fontWeight: 'bold',
+      zIndex: 1,
       color: 'var(--text-white)',
-      marginBottom: '1.5rem',
-      lineHeight: '1.1',
-      textShadow: '1px 1px 1px var(--color-black-50)'
-    },
-    heroSubtitle: {
-      fontSize: '1.75rem',
-      color: 'var(--text-white-90)',
-      marginBottom: '3rem',
-      lineHeight: '1.6',
-      fontWeight: '400',
-      textShadow: '1px 1px 1px var(--color-black-50)',
-      maxWidth: '800px',
-      margin: '0 auto 3rem'
-    },
-    button: {
-      backgroundColor: 'var(--bg-teal)',
-      color: 'var(--text-primary)',
-      padding: '1.25rem 2.5rem',
-      borderRadius: '1rem',
-      border: 'none',
-      fontWeight: '600',
-      cursor: 'pointer',
-      margin: '0 0.5rem 0.5rem 0',
-      transition: 'all 0.2s',
-      display: 'inline-block',
-      fontSize: '1rem',
-      backdropFilter: 'blur(10px)'
-    },
-    buttonSecondary: {
-      backgroundColor: 'var(--color-transparent)',
-      color: 'var(--color-primary-teal)',
-      padding: '1.25rem 2.5rem',
-      borderRadius: '1rem',
-      border: '2px solid var(--color-primary-teal)',
-      fontWeight: '600',
-      cursor: 'pointer',
-      margin: '0 0.5rem 0.5rem 0',
-      transition: 'all 0.2s',
-      display: 'inline-block',
-      fontSize: '1rem',
-      backdropFilter: 'blur(10px)'
-    },
-    section: {
-      padding: '6rem 2rem',
-      maxWidth: '1200px',
-      margin: '0 auto'
-    },
-    sectionTitle: {
-      fontSize: '3.5rem',
-      fontWeight: 'bold',
       textAlign: 'center',
-      marginBottom: '3rem',
-      color: 'var(--text-primary)'
-    },
-    footer: {
-      backgroundColor: 'var(--bg-dark)',
-      color: 'var(--text-white)',
-      padding: '4rem 2rem',
-      textAlign: 'center'
-    },
-    hamburger: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '30px',
-      height: '30px',
-      cursor: 'pointer',
-      backgroundColor: 'var(--color-red-debug)',
-    },
-    hamburgerLine: {
-      width: '20px',
-      height: '2px',
-      backgroundColor: 'var(--color-gray-700)',
-      margin: '2px 0',
-      transition: 'all 0.3s ease'
+      top: '50%',
+      transform: 'translateY(-50%)',
     }    
   };
 
@@ -209,436 +57,19 @@ const HIROHWebsite = () => {
 
   const HomePage = () => (
     <>
-      {/* Hero Section - UNCHANGED */}
-      <section
-        style={{
-          ...styles.hero,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end', // 👈 pushes heroContent down
-          minHeight: '100vh',         // full screen hero
-          position: 'relative',
-        }}
-      >
-        <div style={styles.heroOverlay}></div>
-
-        <div
-          style={{
-            ...styles.heroContent,
-            position: 'relative',
-            zIndex: 1,
-            textAlign: 'center',
-            paddingBottom: '4rem', // 👈 spacing from bottom edge
-          }}
-        >
-          <h1 style={{ ...styles.heroTitle, fontSize: '3.5rem' }}>
-            Your Everyday Phone Is Also<br />
-            Your Privacy Phone
-          </h1>
-
-          <div
-            style={{
-              display: 'grid',
-              gridAutoFlow: 'column',
-              justifyContent: 'center',
-              gap: '6rem',
-              margin: '2rem 0',
-              fontSize: '1.5rem',
-              color: 'var(--text-white)',
-              fontWeight: '600',
-              textShadow: '0 2px 6px var(--color-black-60)',
-            }}
-          >
-            <span>PREMIUM</span>
-            <span>PRIVATE</span>
-            <span>CONVENIENT</span>
-          </div>
-
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button
-              style={styles.button}
-              onClick={() => setCurrentPage('phone')}
-              onMouseOver={(e) => {
-                e.target.style.transform = 'scale(1.05)';
-                e.target.style.backgroundColor = 'var(--bg-white)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.transform = 'scale(1)';
-                e.target.style.backgroundColor = 'var(--color-white-90)';
-              }}
-            >
-              Shop Now
-            </button>
-            <button
-              style={styles.buttonSecondary}
-              onClick={() => setCurrentPage('phone')}
-              onMouseOver={(e) => {
-                e.target.style.transform = 'scale(1.05)';
-                e.target.style.backgroundColor = 'var(--color-white-10)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.transform = 'scale(1)';
-                e.target.style.backgroundColor = 'var(--color-transparent)';
-              }}
-            >
-              Learn More
-            </button>
-          </div>
+      <HeroSection setCurrentPage={setCurrentPage} isMobile={isMobile} />
+      <KeyFeaturesSection isMobile={isMobile} />
+      
+      <section style={styles.imageSection}>
+        <div style={styles.imageOverlay} />
+        <div style={styles.imageContent}>
         </div>
       </section>
-      {/* Section 2: Key Features (Quick Overview) */}
-      <section style={styles.section}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-            gap: '2rem',
-            marginBottom: '4rem',
-          }}
-        >
-          {[
-            {
-              title: 'Privacy First',
-              description: 'Electronically disable camera and microphone, second switch for GPS, Wi-Fi, Bluetooth. You control who sees you and who hears you.'
-            },
-            {
-              title: 'Power & Performance',
-              description: '16GB RAM + 512GB storage, 108MP triple back camera and 32MP selfie cam.'
-            },
-            {
-              title: 'Stunning Display',
-              description: '6.67" AMOLED screen, 120Hz refresh, 600 nits with peak 1800 nits brightness.'
-            },
-            {
-              title: 'Encrypted SD Storage',
-              description: 'Add up to 2TB for everything that matters.'
-            }
-          ].map((card, index) => (
-            <div key={index} style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'var(--bg-white)', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '1rem' }}>{card.title}</h3>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '100vh',
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/hiroh-phone-9.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-          }}
-        />
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            color: 'var(--text-white)',
-            textAlign: 'center',
-            top: '50%',
-            transform: 'translateY(-50%)',
-          }}
-        >
-        </div>
-      </section>
-      {/* Section 3: Privacy Section (Unique Selling Point) */}
-      <section style={{ backgroundColor: 'var(--bg-dark)', color: 'var(--text-white)', padding: '0rem 2rem', marginTop: '-1rem' }}>
-        <div style={styles.section}>
-          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '3rem', color: 'var(--text-white)' }}>
-            You Don't Need To Change Your Phone Habits to Gain Privacy
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
-            {[
-              {
-                title: 'Convenience',
-                description: 'Be in Private mode, and still have all the convenience you\'re used to.'
-              },
-              {
-                title: 'Keep Your Apps',
-                description: 'Don\'t sacrifice apps to be private, just click the switch and enjoy them without selling out your privacy.'
-              },
-              {
-                title: 'Everything Encrypted',
-                description: 'Your files, photos, and conversations stay encrypted.'
-              },
-              {
-                title: 'Private Browsing',
-                description: 'Private browsing and communication tools included.'
-              },
-              {
-                title: 'Local Data Control',
-                description: 'You own your information - no cloud dependency.'
-              },
-              {
-                title: 'Privacy Lockdown Mode',
-                description: 'One-click "Privacy Lockdown Mode" for instant protection.'
-              }
-            ].map((card, index) => (
-              <div key={index} style={{ backgroundColor: 'var(--color-white-10)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--color-white-10)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--text-white)' }}>{card.title}</h3>
-                <p style={{ color: 'var(--color-gray-300)', lineHeight: '1.6' }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Everyday Use Section */}
-      <section style={styles.section}>
-        <h2 style={styles.sectionTitle}>From Everyday Phone to Privacy Phone in One Click</h2>
-        <p style={{ fontSize: '1.25rem', textAlign: 'center', color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 4rem', lineHeight: '1.6' }}>
-          Seamlessly transition between your everyday needs and complete privacy protection.
-        </p>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem', maxWidth: '1100px', margin: '0 auto' }}>
-          {[
-            {
-              title: 'Business-Ready',
-              features: [
-                'All productivity apps supported',
-                '512GB storage for documents',
-                'Flagship performance'
-              ]
-            },
-            {
-              title: 'Personal-Life Friendly',
-              features: [
-                'Media streaming & gaming',
-                'Social apps compatible',
-                'Premium camera system'
-              ]
-            },
-            {
-              title: 'Privacy On-Demand',
-              features: [
-                'Toggle secure mode for banking',
-                'Private conversations',
-                'Anonymous browsing'
-              ]
-            }
-          ].map((card, index) => (
-            <div key={index} style={{ backgroundColor: 'var(--bg-white)', padding: '2.5rem', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>{card.title}</h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {card.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} style={{ marginBottom: '1rem', color: 'var(--color-gray-700)' }}>✓ {feature}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Section 6: FAQ Section */}
-      <section style={{ backgroundColor: 'var(--bg-dark)', padding: '4rem 0' }}>
-        <h2 style={{ ...styles.sectionTitle, color: 'var(--text-white)' }}>Frequently Asked Questions</h2>
-
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          {[
-            {
-              q: 'Is HIROH compatible with my carrier?',
-              a: 'Yes, HIROH works with all major carriers worldwide. It supports 5G, 4G LTE, and includes dual SIM capability.'
-            },
-            {
-              q: 'Can I install my own apps?',
-              a: 'Absolutely! HIROH runs the e/OS operating system for a fully "deGoogled" Android-based experience, giving you access to millions of apps while maintaining your privacy.'
-            },
-            {
-              q: 'How does privacy mode work?',
-              a: 'Our hardware kill switches physically disconnect cameras, microphones at the circuit level. No software can override this.'
-            },
-            {
-              q: 'What happens if I lose my phone?',
-              a: 'All data is encrypted by default. Remote wipe capabilities and secure boot ensure your information stays protected.'
-            },
-            {
-              q: 'Is my data stored in the cloud?',
-              a: 'No. HIROH prioritizes local storage and gives you complete control. Cloud backup is optional and always encrypted end-to-end.'
-            }
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                marginBottom: '2rem',
-                background: 'var(--color-white-90)',  // softer than pure white
-                padding: '2rem',
-                borderRadius: '0.75rem',
-                border: '1px solid var(--color-gray-200)',          // subtle border
-                boxShadow: '0 4px 12px var(--color-black-05)',
-                backdropFilter: 'blur(4px)'           // frosted effect
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 'bold',
-                  marginBottom: '1rem',
-                  color: 'var(--text-primary)'
-                }}
-              >
-                {item.q}
-              </h3>
-              <p style={{ color: 'var(--text-tertiary)', lineHeight: '1.6' }}>{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-
-      <section style={{ padding: '6rem 2rem', backgroundColor: 'var(--color-gray-100)' }}>
-        <div style={styles.section}>
-          <h2
-            style={{
-              fontSize: '3.5rem',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              marginBottom: '1.5rem',
-              color: 'var(--text-primary)',
-            }}
-          >
-            Finally, a Phone That Puts You First
-          </h2>
-
-          <p
-            style={{
-              textAlign: 'center',
-              fontSize: '1.25rem',
-              color: 'var(--text-secondary)',
-              maxWidth: '900px',
-              margin: '0 auto 3rem',
-              lineHeight: '1.6',
-            }}
-          >
-            In a world where your data is constantly harvested, we chose a different path.
-            Zero tracking. Zero data collection. Maximum security.
-          </p>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '2rem',
-              marginBottom: '4rem',
-            }}
-          >
-            {[
-              {
-                title: 'Zero Surveillance',
-                description: 'No behavioral tracking, no location harvesting, no digital fingerprinting.'
-              },
-              {
-                title: 'End-to-End Encryption',
-                description: 'Military-grade encryption. Your keys, your data—never ours.'
-              },
-              {
-                title: 'Open Source Security',
-                description: 'Protocols open to audit by independent researchers.'
-              }
-            ].map((card, index) => (
-              <div
-                key={index}
-                style={{
-                  textAlign: 'center',
-                  padding: '2rem',
-                  backgroundColor: 'var(--bg-white)',
-                  borderRadius: '1rem',
-                  boxShadow: '0 10px 30px var(--color-black-10)',
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: '1.25rem',
-                    fontWeight: 'bold',
-                    color: 'var(--text-primary)',
-                    marginBottom: '0.5rem',
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* Updated CTA Section */}
-      <section
-        style={{
-          position: 'relative',
-          backgroundColor: 'var(--bg-dark)',
-          color: 'var(--text-white)',
-          padding: 0,
-          minHeight: '80vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Background image */}
-        <img
-          src={`${process.env.PUBLIC_URL}/images/hiroh-phone-3.jpg`}
-          alt="HIROH Phone"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
-            filter: 'brightness(0.45) contrast(1.1)', // darken for text readability
-          }}
-        />
-
-        {/* Overlay content */}
-        <div style={{ position: 'relative', zIndex: 1, padding: '2rem', maxWidth: '900px' }}>
-          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>
-            Take Back Your Privacy
-          </h2>
-          <p
-            style={{
-              fontSize: '1.5rem',
-              marginBottom: '2.5rem',
-              lineHeight: '1.6',
-              color: 'var(--text-white-90)',
-            }}
-          >
-            Join thousands of privacy-conscious individuals who refuse to compromise their digital freedom.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button style={{
-              ...styles.button,
-              backgroundColor: 'var(--color-white-90)',
-              color: 'var(--text-primary)'               // White text
-            }}>
-              Shop Now
-            </button>
-            <button style={{
-              ...styles.buttonSecondary,
-              backgroundColor: 'var(--color-transparent)', // Keep transparent or change to solid
-              color: 'var(--text-white)',                 // White text
-              borderColor: 'var(--color-white)'            // White border
-            }}>
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
-
+      <PrivacySection isMobile={isMobile} />
+      <EverydayUseSection isMobile={isMobile} />
+      <FAQSection isMobile={isMobile} />
+      <FinallySection isMobile={isMobile} />
+      <TakeBackPrivacySection isMobile={isMobile} />
     </>
   );
 
@@ -864,7 +295,7 @@ const HIROHWebsite = () => {
         {/* Hero Section (Top Banner) */}
         <section style={{ background: heroBg, color: 'var(--text-white)', padding: '6rem 2rem' }}>
           <div style={{ ...(styles.section || {}), textAlign: 'center' }}>
-            <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '0.75rem' }}>HIROH: Your Mobile SCIF</h1>
+            <h1 style={{ fontWeight: 800, marginBottom: '0.75rem' }}>HIROH: Your Mobile SCIF</h1>
             <p style={{ fontSize: '1.25rem', opacity: 0.95, marginBottom: '2rem' }}>
               Military-grade privacy, anywhere you go.
             </p>
@@ -1430,6 +861,7 @@ const HIROHWebsite = () => {
 
         {/* Main About Content */}
         <div style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '4rem' }}>
+        <h1 style={{ fontWeight: 'bold', marginBottom: '3rem', textAlign: 'center',color: 'var(--text-white)' }}>About HIROH</h1>
           <p style={{ fontSize: '1.5rem', lineHeight: '1.8', marginBottom: '2rem', color: 'var(--color-gray-200)' }}>
             At HIROH, we believe your phone should work for you — not against you. <br></br>Big Tech built devices that spy on, track, and monetize your life. <br></br>We built HIROH to stop that.
           </p>
@@ -1487,18 +919,7 @@ const HIROHWebsite = () => {
 
   return (
     <div style={styles.container}>
-      <Header
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        hoveredMenu={hoveredMenu}
-        setHoveredMenu={setHoveredMenu}
-        selectedSegment={selectedSegment}
-        setSelectedSegment={setSelectedSegment}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        isMobile={isMobile}
-        styles={styles}
-      />
+      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSegment={setSelectedSegment} isMobile={isMobile} />
 
       {/* Page Content */}
       {currentPage === 'home' && <HomePage />}
@@ -1506,7 +927,7 @@ const HIROHWebsite = () => {
       {currentPage === 'about' && <AboutPage />}
       {currentPage === 'contact' && <ContactPage />}
       
-      <Footer styles={styles} />
+      <Footer />
     </div>
   );
 };
