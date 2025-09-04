@@ -33,6 +33,7 @@
   /* Transparent Colors */
   --color-white-90: rgba(255, 255, 255, 0.9);
   --color-white-95: rgba(255, 255, 255, 0.95);
+  --color-white-98: rgba(255, 255, 255, 0.98);
   --color-white-85: rgba(255, 255, 255, 0.85);
   --color-white-10: rgba(255, 255, 255, 0.1);
   --color-white-06: rgba(255, 255, 255, 0.06);
@@ -49,6 +50,11 @@
   --color-black-30: rgba(0, 0, 0, 0.3);
   --color-black-50: rgba(0, 0, 0, 0.5);
   --color-black-60: rgba(0, 0, 0, 0.6);
+  
+  /* Shadow transparency */
+  --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
   
   /* Gradient Colors */
   --color-teal-15: rgba(16, 185, 129, 0.15);
