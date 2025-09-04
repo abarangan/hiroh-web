@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const HIROHWebsite = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [selectedSegment, setSelectedSegment] = useState('individuals');
   const [killSwitchActive, setKillSwitchActive] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const styles = {
     container: {
@@ -20,14 +32,15 @@ const HIROHWebsite = () => {
       backgroundColor: 'rgba(255, 255, 255, 0.95)',
       backdropFilter: 'blur(10px)',
       borderBottom: '1px solid #e5e7eb',
-      padding: '1rem 2rem'
+      padding: '1rem 0.5rem' // Reduced padding for mobile testing
     },
     navContent: {
-      maxWidth: '1200px',
+      maxWidth: isMobile ? '100%' : '1200px',
       margin: '0 auto',
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      padding: isMobile ? '0 0.5rem' : '0 2rem' // Add some inner padding on mobile
     },
     navLinks: {
       display: 'flex',
@@ -126,7 +139,7 @@ const HIROHWebsite = () => {
       margin: '0 auto 3rem'
     },
     button: {
-      backgroundColor: 'rgba(255,255,255,0.9)',
+      backgroundColor: '#0d9488',
       color: '#111827',
       padding: '1.25rem 2.5rem',
       borderRadius: '1rem',
@@ -141,10 +154,10 @@ const HIROHWebsite = () => {
     },
     buttonSecondary: {
       backgroundColor: 'transparent',
-      color: 'white',
+      color: '#0d9488',
       padding: '1.25rem 2.5rem',
       borderRadius: '1rem',
-      border: '2px solid rgba(255,255,255,0.8)',
+      border: '2px solid #0d9488',
       fontWeight: '600',
       cursor: 'pointer',
       margin: '0 0.5rem 0.5rem 0',
@@ -170,8 +183,43 @@ const HIROHWebsite = () => {
       color: 'white',
       padding: '4rem 2rem',
       textAlign: 'center'
-    }
+    },
+    hamburger: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '30px',
+      height: '30px',
+      cursor: 'pointer',
+      backgroundColor: 'red',
+    },
+    hamburgerLine: {
+      width: '20px',
+      height: '2px',
+      backgroundColor: '#374151',
+      margin: '2px 0',
+      transition: 'all 0.3s ease'
+    }    
   };
+
+  const HamburgerIcon = () => (
+    <div
+      style={{
+        width: '30px',
+        height: '30px',
+        backgroundColor: 'red',
+        position: 'relative',
+        zIndex: 999
+      }}
+      onClick={() => {
+        console.log('Hamburger clicked!');
+        setMobileMenuOpen(!mobileMenuOpen);
+      }}
+    >
+      TEST
+    </div>
+  );
 
   const HomePage = () => (
     <>
@@ -319,7 +367,7 @@ const HIROHWebsite = () => {
       <section style={{ backgroundColor: '#1f1f1f', color: 'white', padding: '0rem 2rem', marginTop: '-1rem' }}>
         <div style={styles.section}>
           <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '3rem', color: 'white' }}>
-            You Don't Have to Change How You Use Your Phone to Be Private
+            You Don't Need To Change Your Phone Habits to Gain Privacy
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
             <div style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.2)' }}>
@@ -609,10 +657,19 @@ const HIROHWebsite = () => {
             Join thousands of privacy-conscious individuals who refuse to compromise their digital freedom.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button style={{ ...styles.button, backgroundColor: 'white', color: '#111827' }}>
+            <button style={{
+              ...styles.button,
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              color: '#111827'               // White text
+            }}>
               Shop Now
             </button>
-            <button style={{ ...styles.buttonSecondary, borderColor: 'white', color: 'white' }}>
+            <button style={{
+              ...styles.buttonSecondary,
+              backgroundColor: 'transparent', // Keep transparent or change to solid
+              color: 'white',                 // White text
+              borderColor: 'white'            // White border
+            }}>
               Learn More
             </button>
           </div>
@@ -622,6 +679,11 @@ const HIROHWebsite = () => {
       {/* Footer */}
       <footer style={styles.footer}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/hiroh-inner-t.png`}
+            alt="HIROH Symbol"
+            style={{ height: '30px', width: 'auto' }}
+          />
           <img
             src={`${process.env.PUBLIC_URL}/images/hiroh-logo-t.png`}
             alt="HIROH"
@@ -1169,27 +1231,27 @@ const HIROHWebsite = () => {
               <tbody>
                 <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
                   <td style={{ padding: '1.25rem', color: '#374151', fontWeight: '500' }}>RAM</td>
-                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#10b981', fontWeight: 'bold' }}>16GB</td>
+                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#0d9488', fontWeight: 'bold' }}>16GB</td>
                   <td style={{ padding: '1.25rem', textAlign: 'center', color: '#6b7280' }}>8–12GB</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #e5e7eb', backgroundColor: '#f9fafb' }}>
                   <td style={{ padding: '1.25rem', color: '#374151', fontWeight: '500' }}>Storage</td>
-                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#10b981', fontWeight: 'bold' }}>512GB + 2TB expandable</td>
+                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#0d9488', fontWeight: 'bold' }}>512GB + 2TB expandable</td>
                   <td style={{ padding: '1.25rem', textAlign: 'center', color: '#6b7280' }}>Max 1TB, no expansion</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #e5e7eb' }}>
                   <td style={{ padding: '1.25rem', color: '#374151', fontWeight: '500' }}>Privacy Features</td>
-                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#10b981', fontWeight: 'bold' }}>Hardware kill switches</td>
+                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#0d9488', fontWeight: 'bold' }}>Hardware kill switches</td>
                   <td style={{ padding: '1.25rem', textAlign: 'center', color: '#6b7280' }}>Software controls only</td>
                 </tr>
                 <tr style={{ borderBottom: '1px solid #e5e7eb', backgroundColor: '#f9fafb' }}>
                   <td style={{ padding: '1.25rem', color: '#374151', fontWeight: '500' }}>Data Collection</td>
-                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#10b981', fontWeight: 'bold' }}>Zero tracking</td>
+                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#0d9488', fontWeight: 'bold' }}>Zero tracking</td>
                   <td style={{ padding: '1.25rem', textAlign: 'center', color: '#6b7280' }}>Extensive data mining</td>
                 </tr>
                 <tr>
                   <td style={{ padding: '1.25rem', color: '#374151', fontWeight: '500' }}>Pricing</td>
-                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#10b981', fontWeight: 'bold' }}></td>
+                  <td style={{ padding: '1.25rem', textAlign: 'center', color: '#0d9488', fontWeight: 'bold' }}></td>
                   <td style={{ padding: '1.25rem', textAlign: 'center', color: '#6b7280' }}></td>
                 </tr>
               </tbody>
@@ -1421,7 +1483,6 @@ const HIROHWebsite = () => {
   const AboutPage = () => (
     <section style={{ paddingTop: '120px', backgroundColor: '#1f2937', color: 'white', padding: '120px 2rem 4rem' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '4rem', fontWeight: 'bold', marginBottom: '3rem', textAlign: 'center' }}>About HIROH</h1>
 
         {/* Main About Content */}
         <div style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '4rem' }}>
@@ -1441,32 +1502,34 @@ const HIROHWebsite = () => {
         {/* Mission Section */}
         <div
           style={{
-            backgroundColor: 'rgba(255,255,255,0.05)',
+            backgroundColor: 'rgba(255,255,255,0.03)',
             borderRadius: '1rem',
             padding: '3rem',
             maxWidth: '900px',
             margin: '0 auto',
-            border: '2px solid rgba(20, 184, 166, 0.5)', // teal border
+            border: '1px solid rgba(255,255,255,0.1)',
+            backdropFilter: 'blur(6px)'
           }}
         >
           <h2
             style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              marginBottom: '2rem',
+              fontSize: '2rem',
+              fontWeight: '700',
+              marginBottom: '1.5rem',
               textAlign: 'center',
-              color: '#0d9488', // teal heading
+              color: 'white',
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
             }}
           >
             Our Mission
           </h2>
           <p
             style={{
-              fontSize: '1.5rem',
+              fontSize: '1.25rem',
               lineHeight: '1.8',
               textAlign: 'center',
-              color: 'white',
-              fontWeight: '500',
+              color: '#e5e7eb',
             }}
           >
             To give people back control over their digital lives by building technology that
@@ -1477,6 +1540,8 @@ const HIROHWebsite = () => {
       </div>
     </section>
   );
+
+  console.log('isMobile:', isMobile);
 
   return (
     <div style={styles.container}>
@@ -1505,7 +1570,11 @@ const HIROHWebsite = () => {
               style={{ height: '22px', width: 'auto' }}
             />
           </button>
-          <ul style={styles.navLinks}>
+          {/* Desktop Navigation - hide on mobile */}
+          <ul style={{
+            ...styles.navLinks,
+            display: isMobile ? 'none' : 'flex'
+          }}>
             <li>
               <button
                 onClick={() => setCurrentPage('home')}
@@ -1534,8 +1603,8 @@ const HIROHWebsite = () => {
               {hoveredMenu === 'phone' && (
                 <div
                   style={styles.submenu}
-                  onMouseEnter={() => setHoveredMenu('phone')}  // Keep menu open when hovering submenu
-                  onMouseLeave={() => setHoveredMenu(null)}     // Close when leaving submenu
+                  onMouseEnter={() => setHoveredMenu('phone')}
+                  onMouseLeave={() => setHoveredMenu(null)}
                 >
                   <button
                     onClick={() => {
@@ -1646,8 +1715,185 @@ const HIROHWebsite = () => {
               </button>
             </li>
           </ul>
+
+          {/* Mobile Hamburger Icon */}
+          {isMobile && (
+            <div
+              style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                cursor: 'pointer',
+                flexShrink: 0,
+                marginRight: '1rem'
+              }}
+              onClick={() => {
+                console.log('Hamburger clicked!');
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+            >
+              <div style={{
+                width: '20px',
+                height: '2px',
+                backgroundColor: '#374151',
+                margin: '2px 0',
+                transition: 'all 0.3s ease',
+                transform: mobileMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'
+              }} />
+              <div style={{
+                width: '20px',
+                height: '2px',
+                backgroundColor: '#374151',
+                margin: '2px 0',
+                transition: 'all 0.3s ease',
+                opacity: mobileMenuOpen ? 0 : 1
+              }} />
+              <div style={{
+                width: '20px',
+                height: '2px',
+                backgroundColor: '#374151',
+                margin: '2px 0',
+                transition: 'all 0.3s ease',
+                transform: mobileMenuOpen ? 'rotate(-45deg) translate(7px, -6px)' : 'none'
+              }} />
+            </div>
+          )}
         </div>
       </nav>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && isMobile && (
+        <div style={{
+          position: 'fixed',
+          top: '80px', // Just below your nav bar
+          left: 0,
+          right: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.98)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid #e5e7eb',
+          zIndex: 40,
+          padding: '1rem 0'
+        }}>
+          <div style={{ padding: '0 2rem' }}>
+            {/* Home */}
+            <button
+              onClick={() => {
+                setCurrentPage('home');
+                setMobileMenuOpen(false);
+              }}
+              style={{
+                display: 'block',
+                width: '100%',
+                textAlign: 'left',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: currentPage === 'home' ? '#111827' : '#6b7280',
+                fontSize: '1rem',
+                fontWeight: currentPage === 'home' ? '600' : '500',
+                padding: '1rem 0',
+                borderBottom: '1px solid #f3f4f6',
+                fontFamily: 'inherit'
+              }}
+            >
+              Home
+            </button>
+
+            {/* Phone Section with Expanded Submenu */}
+            <div style={{ borderBottom: '1px solid #f3f4f6' }}>
+              <button
+                onClick={() => {
+                  setCurrentPage('phone');
+                  setMobileMenuOpen(false);
+                }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'left',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: currentPage === 'phone' ? '#111827' : '#6b7280',
+                  fontSize: '1rem',
+                  fontWeight: currentPage === 'phone' ? '600' : '500',
+                  padding: '1rem 0',
+                  fontFamily: 'inherit'
+                }}
+              >
+                Phone
+              </button>
+
+              {/* Phone Submenu Items */}
+              <div style={{ paddingLeft: '1rem' }}>
+                {[
+                  { key: 'govt-military', label: 'Government & Military' },
+                  { key: 'business', label: 'Business' },
+                  { key: 'journalists', label: 'Journalists' },
+                  { key: 'individuals', label: 'Individuals' }
+                ].map(item => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      setSelectedSegment(item.key);
+                      setCurrentPage('phone');
+                      setMobileMenuOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      textAlign: 'left',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      color: '#6b7280',
+                      fontSize: '0.9rem',
+                      fontFamily: 'inherit',
+                      padding: '0.75rem 0',
+                      borderBottom: '1px solid #f9fafb'
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Other Menu Items */}
+            {[
+              { key: 'tech', label: 'Technology' },
+              { key: 'about', label: 'About' },
+              { key: 'contact', label: 'Contact' }
+            ].map(item => (
+              <button
+                key={item.key}
+                onClick={() => {
+                  setCurrentPage(item.key);
+                  setMobileMenuOpen(false);
+                }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'left',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: currentPage === item.key ? '#111827' : '#6b7280',
+                  fontSize: '1rem',
+                  fontWeight: currentPage === item.key ? '600' : '500',
+                  padding: '1rem 0',
+                  borderBottom: '1px solid #f3f4f6',
+                  fontFamily: 'inherit'
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Page Content */}
       {currentPage === 'home' && <HomePage />}
