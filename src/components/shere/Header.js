@@ -4,8 +4,6 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  console.log(isMobile);
-
   const styles = {
     nav: {
       position: 'fixed',
@@ -226,7 +224,6 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             <div
               style={styles.hamburger}
               onClick={() => {
-                console.log('Hamburger clicked!');
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
             >

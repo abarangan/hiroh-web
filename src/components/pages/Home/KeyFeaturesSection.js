@@ -25,7 +25,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
       display: isMobile ? 'flex' : 'grid',
       flexWrap: isMobile ? 'wrap' : 'none',
       justifyContent: 'center',
-      alignItems: isMobile ? 'center' : 'none',
+      alignItems: isMobile ? 'center' : 'normal',
       gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
       gap: isMobile ? '1rem' : '2rem',
       marginBottom: isMobile ? '.8rem' : '4rem',
