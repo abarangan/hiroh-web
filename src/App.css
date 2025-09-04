@@ -1,3 +1,74 @@
+/* CSS Color Variable Definitions */
+:root {
+  /* Base Colors */
+  --color-primary-teal: #0d9488;
+  --color-primary-teal-hover: #0f766e;
+  --color-black: #111827;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  
+  /* Gray Scale */
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f9fafb;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #0f172a;
+  
+  /* Dark Colors */
+  --color-dark-primary: #1f2937;
+  --color-dark-secondary: #0f172a;
+  --color-dark-tertiary: #0b1220;
+  --color-dark-quaternary: #0e1628;
+  
+  /* Accent Colors */
+  --color-green: #10b981;
+  --color-red: #ef4444;
+  --color-red-debug: #ff0000;
+  
+  /* Transparent Colors */
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-95: rgba(255, 255, 255, 0.95);
+  --color-white-85: rgba(255, 255, 255, 0.85);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-06: rgba(255, 255, 255, 0.06);
+  --color-white-04: rgba(255, 255, 255, 0.04);
+  --color-white-03: rgba(255, 255, 255, 0.03);
+  --color-white-15: rgba(255, 255, 255, 0.15);
+  --color-white-12: rgba(255, 255, 255, 0.12);
+  --color-white-35: rgba(255, 255, 255, 0.35);
+  
+  --color-black-05: rgba(0, 0, 0, 0.05);
+  --color-black-08: rgba(0, 0, 0, 0.08);
+  --color-black-10: rgba(0, 0, 0, 0.1);
+  --color-black-15: rgba(0, 0, 0, 0.15);
+  --color-black-30: rgba(0, 0, 0, 0.3);
+  --color-black-50: rgba(0, 0, 0, 0.5);
+  --color-black-60: rgba(0, 0, 0, 0.6);
+  
+  /* Gradient Colors */
+  --color-teal-15: rgba(16, 185, 129, 0.15);
+  --color-teal-35: rgba(16, 185, 129, 0.35);
+  
+  /* Text Color Shorthands */
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-gray-500);
+  --text-tertiary: var(--color-gray-600);
+  --text-white: var(--color-white);
+  --text-white-90: var(--color-white-90);
+  --text-white-85: var(--color-white-85);
+  
+  /* Background Color Shorthands */
+  --bg-primary: var(--color-gray-50);
+  --bg-white: var(--color-white);
+  --bg-dark: var(--color-dark-primary);
+  --bg-teal: var(--color-primary-teal);
+}
+
 .App {
   text-align: center;
 }

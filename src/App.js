@@ -21,7 +21,7 @@ const HIROHWebsite = () => {
   const styles = {
     container: {
       minHeight: '100vh',
-      backgroundColor: '#f8fafc',
+      backgroundColor: 'var(--bg-primary)',
       fontFamily: '"Montserrat", sans-serif'
     },
     nav: {
@@ -29,9 +29,9 @@ const HIROHWebsite = () => {
       top: 0,
       width: '100%',
       zIndex: 50,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      backgroundColor: 'var(--color-white-95)',
       backdropFilter: 'blur(10px)',
-      borderBottom: '1px solid #e5e7eb',
+      borderBottom: '1px solid var(--color-gray-200)',
       padding: '1rem 0.5rem' // Reduced padding for mobile testing
     },
     navContent: {
@@ -50,8 +50,8 @@ const HIROHWebsite = () => {
       padding: 0
     },
     navLink: {
-      color: '#6b7280',
-      backgroundColor: 'transparent',
+      color: 'var(--text-secondary)',
+      backgroundColor: 'var(--color-transparent)',
       border: 'none',
       cursor: 'pointer',
       fontWeight: '500',
@@ -62,21 +62,21 @@ const HIROHWebsite = () => {
       fontFamily: 'inherit'
     },
     navLinkActive: {
-      color: '#111827'
+      color: 'var(--text-primary)'
     },
     submenu: {
       position: 'absolute',
       top: '100%',
       left: '50%',
       transform: 'translateX(-50%)',
-      backgroundColor: 'white',
-      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+      backgroundColor: 'var(--bg-white)',
+      boxShadow: '0 10px 30px var(--color-black-15)',
       borderRadius: '0.75rem',
       padding: '0.5rem 0',
       minWidth: '220px',
       marginTop: '0',  // Changed from 0.75rem to 0
       zIndex: 100,
-      border: '1px solid #e5e7eb'
+      border: '1px solid var(--color-gray-200)'
     },
     submenuItem: {
       display: 'block',
@@ -86,11 +86,11 @@ const HIROHWebsite = () => {
       background: 'none',
       border: 'none',
       cursor: 'pointer',
-      color: '#374151',
+      color: 'var(--color-gray-700)',
       fontSize: '0.925rem',
       fontFamily: 'inherit',
       transition: 'all 0.2s',
-      borderLeft: '3px solid transparent'
+      borderLeft: '3px solid var(--color-transparent)'
     },    
     hero: {
       minHeight: '100vh',
@@ -123,24 +123,24 @@ const HIROHWebsite = () => {
     heroTitle: {
       fontSize: '5rem',
       fontWeight: 'bold',
-      color: 'white',
+      color: 'var(--text-white)',
       marginBottom: '1.5rem',
       lineHeight: '1.1',
-      textShadow: '1px 1px 1px rgba(0,0,0,0.5)'
+      textShadow: '1px 1px 1px var(--color-black-50)'
     },
     heroSubtitle: {
       fontSize: '1.75rem',
-      color: 'rgba(255,255,255,0.9)',
+      color: 'var(--text-white-90)',
       marginBottom: '3rem',
       lineHeight: '1.6',
       fontWeight: '400',
-      textShadow: '1px 1px 1px rgba(0,0,0,0.5)',
+      textShadow: '1px 1px 1px var(--color-black-50)',
       maxWidth: '800px',
       margin: '0 auto 3rem'
     },
     button: {
-      backgroundColor: '#0d9488',
-      color: '#111827',
+      backgroundColor: 'var(--bg-teal)',
+      color: 'var(--text-primary)',
       padding: '1.25rem 2.5rem',
       borderRadius: '1rem',
       border: 'none',
@@ -153,11 +153,11 @@ const HIROHWebsite = () => {
       backdropFilter: 'blur(10px)'
     },
     buttonSecondary: {
-      backgroundColor: 'transparent',
-      color: '#0d9488',
+      backgroundColor: 'var(--color-transparent)',
+      color: 'var(--color-primary-teal)',
       padding: '1.25rem 2.5rem',
       borderRadius: '1rem',
-      border: '2px solid #0d9488',
+      border: '2px solid var(--color-primary-teal)',
       fontWeight: '600',
       cursor: 'pointer',
       margin: '0 0.5rem 0.5rem 0',
@@ -176,11 +176,11 @@ const HIROHWebsite = () => {
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: '3rem',
-      color: '#111827'
+      color: 'var(--text-primary)'
     },
     footer: {
-      backgroundColor: '#1f2937',
-      color: 'white',
+      backgroundColor: 'var(--bg-dark)',
+      color: 'var(--text-white)',
       padding: '4rem 2rem',
       textAlign: 'center'
     },
@@ -192,12 +192,12 @@ const HIROHWebsite = () => {
       width: '30px',
       height: '30px',
       cursor: 'pointer',
-      backgroundColor: 'red',
+      backgroundColor: 'var(--color-red-debug)',
     },
     hamburgerLine: {
       width: '20px',
       height: '2px',
-      backgroundColor: '#374151',
+      backgroundColor: 'var(--color-gray-700)',
       margin: '2px 0',
       transition: 'all 0.3s ease'
     }    
@@ -208,7 +208,7 @@ const HIROHWebsite = () => {
       style={{
         width: '30px',
         height: '30px',
-        backgroundColor: 'red',
+        backgroundColor: 'var(--color-red-debug)',
         position: 'relative',
         zIndex: 999
       }}
@@ -258,9 +258,9 @@ const HIROHWebsite = () => {
               gap: '6rem',
               margin: '2rem 0',
               fontSize: '1.5rem',
-              color: 'white',
+              color: 'var(--text-white)',
               fontWeight: '600',
-              textShadow: '0 2px 6px rgba(0,0,0,0.6)',
+              textShadow: '0 2px 6px var(--color-black-60)',
             }}
           >
             <span>PREMIUM</span>
@@ -274,11 +274,11 @@ const HIROHWebsite = () => {
               onClick={() => setCurrentPage('phone')}
               onMouseOver={(e) => {
                 e.target.style.transform = 'scale(1.05)';
-                e.target.style.backgroundColor = 'white';
+                e.target.style.backgroundColor = 'var(--bg-white)';
               }}
               onMouseOut={(e) => {
                 e.target.style.transform = 'scale(1)';
-                e.target.style.backgroundColor = 'rgba(255,255,255,0.9)';
+                e.target.style.backgroundColor = 'var(--color-white-90)';
               }}
             >
               Shop Now
@@ -288,11 +288,11 @@ const HIROHWebsite = () => {
               onClick={() => setCurrentPage('phone')}
               onMouseOver={(e) => {
                 e.target.style.transform = 'scale(1.05)';
-                e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                e.target.style.backgroundColor = 'var(--color-white-10)';
               }}
               onMouseOut={(e) => {
                 e.target.style.transform = 'scale(1)';
-                e.target.style.backgroundColor = 'transparent';
+                e.target.style.backgroundColor = 'var(--color-transparent)';
               }}
             >
               Learn More
@@ -310,27 +310,27 @@ const HIROHWebsite = () => {
             marginBottom: '4rem',
           }}
         >
-          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem' }}>Privacy First</h3>
-            <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.5' }}>
+          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'var(--bg-white)', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '1rem' }}>Privacy First</h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
               Electronically disable camera and microphone, second switch for GPS, Wi-Fi, Bluetooth. You control who sees you and who hears you.
             </p>
           </div>
-          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem' }}>Power & Performance</h3>
-            <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.5' }}>
+          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'var(--bg-white)', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '1rem' }}>Power & Performance</h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
               16GB RAM + 512GB storage,<br /> 108MP triple back camera and 32MP selfie cam.
             </p>
           </div>
-          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem' }}>Stunning Display</h3>
-            <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.5' }}>
+          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'var(--bg-white)', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '1rem' }}>Stunning Display</h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
               6.67" AMOLED screen, 120Hz refresh, <br />600 nits with peak 1800 nits brightness.
             </p>
           </div>
-          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem' }}>Encrypted SD Storage</h3>
-            <p style={{ fontSize: '0.95rem', color: '#6b7280', lineHeight: '1.5' }}>
+          <div style={{ textAlign: 'center', padding: '2rem', backgroundColor: 'var(--bg-white)', borderRadius: '1rem', boxShadow: '0 10px 30px var(--color-black-10)' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '1rem' }}>Encrypted SD Storage</h3>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
               Add up to 2TB for everything that matters.
             </p>
           </div>
@@ -364,15 +364,15 @@ const HIROHWebsite = () => {
         </div>
       </section>
       {/* Section 3: Privacy Section (Unique Selling Point) */}
-      <section style={{ backgroundColor: '#1f1f1f', color: 'white', padding: '0rem 2rem', marginTop: '-1rem' }}>
+      <section style={{ backgroundColor: 'var(--color-dark-primary)', color: 'var(--text-white)', padding: '0rem 2rem', marginTop: '-1rem' }}>
         <div style={styles.section}>
-          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '3rem', color: 'white' }}>
+          <h2 style={{ fontSize: '3.5rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '3rem', color: 'var(--text-white)' }}>
             You Don't Need To Change Your Phone Habits to Gain Privacy
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '2rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.2)' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'white' }}>Convenience</h3>
-              <p style={{ color: '#d1d5db', lineHeight: '1.6' }}>
+            <div style={{ backgroundColor: 'var(--color-white-10)', padding: '2rem', borderRadius: '1rem', border: '1px solid var(--color-white-10)' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: 'var(--text-white)' }}>Convenience</h3>
+              <p style={{ color: 'var(--color-gray-300)', lineHeight: '1.6' }}>
                 Be in Private mode, and still have all the convenience you're used to.
               </p>
             </div>
