@@ -1,4 +1,5 @@
 import React from 'react';
+import Accordion from '../../ui/Accordion';
 
 const FAQSection = ({ isMobile }) => {
   const faqs = [
@@ -33,26 +34,6 @@ const FAQSection = ({ isMobile }) => {
       maxWidth: '800px', 
       margin: '0 auto',
       padding: isMobile ? '0 1rem' : '0'
-    },
-    faqItem: {
-      marginBottom: isMobile ? '1.5rem' : '2rem',
-      background: 'var(--color-white-90)',
-      padding: isMobile ? '1.5rem' : '2rem',
-      borderRadius: '0.75rem',
-      border: '1px solid var(--color-gray-200)',
-      boxShadow: '0 4px 12px var(--color-black-05)',
-      backdropFilter: 'blur(4px)'
-    },
-    question: {
-      fontSize: isMobile ? '1.1rem' : '1.25rem',
-      fontWeight: 'bold',
-      marginBottom: '1rem',
-      color: 'var(--text-primary)'
-    },
-    answer: {
-      color: 'var(--text-tertiary)', 
-      lineHeight: '1.6',
-      fontSize: isMobile ? '0.9rem' : '1rem'
     }
   };
 
@@ -70,16 +51,7 @@ const FAQSection = ({ isMobile }) => {
       </h2>
 
       <div style={styles.content}>
-        {faqs.map((item, i) => (
-          <div key={i} style={styles.faqItem}>
-            <h3 style={styles.question}>
-              {item.q}
-            </h3>
-            <p style={styles.answer}>
-              {item.a}
-            </p>
-          </div>
-        ))}
+        <Accordion items={faqs} isMobile={isMobile} />
       </div>
     </section>
   );
