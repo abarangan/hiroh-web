@@ -1,0 +1,28 @@
+
+/* Filled variant */
+.button-filled:hover {
+  background-color: var(--bg-white) !important;
+}
+
+/* Outline variant */
+.button-outline:hover {
+  background-color: var(--color-white-10) !important;
+  border-color: var(--color-white) !important;
+  color: var(--color-white) !important;
+}
+
+/* Green variant */
+.button-green:hover {
+  background-color: var(--color-primary-teal-hover) !important;
+}
+
+/* White variant */
+.button-white:hover {
+  background-color: var(--color-white) !important;
+}
+
+/* Outline White variant */
+.button-outlineWhite:hover {
+  border-color: var(--color-white-90) !important;
+  color: var(--color-white-90) !important;
+}
