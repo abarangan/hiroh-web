@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) => {
   const [hoveredMenu, setHoveredMenu] = useState(null);
@@ -16,7 +17,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
     },
     navContent: {
       maxWidth: isMobile ? '100%' : '1200px',
-      padding: isMobile ? '0 1rem' : '1rem 2rem',
+      padding: isMobile ? '0 1rem' : '0.2rem 2rem',
       height: isMobile ? '60px' : 'auto',
       margin: '0 auto',
       display: 'flex',
@@ -30,6 +31,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       listStyle: 'none',
       margin: 0,
       padding: 0
+    },
+    navLinkItem: {
+      position: 'relative',
+      padding: '1rem 0.5rem'
     },
     navLink: {
       color: 'var(--text-gray)',
@@ -49,7 +54,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
     submenu: {
       position: 'absolute',
       top: '100%',
-      left: '50%',
+      left: '-100%',
       transform: 'translateX(-50%)',
       backgroundColor: 'var(--bg-white)',
       boxShadow: '0 10px 30px var(--color-black-15)',
@@ -124,7 +129,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             ...styles.navLinks,
             display: isMobile ? 'none' : 'flex'
           }}>
-            <li>
+            <li style={styles.navLinkItem}>
               <button
                 onClick={() => setCurrentPage('home')}
                 style={{
@@ -136,7 +141,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               </button>
             </li>
             <li
-              style={{ position: 'relative' }}
+              style={styles.navLinkItem}
               onMouseEnter={() => setHoveredMenu('phone')}
               onMouseLeave={() => setHoveredMenu(null)}
             >
@@ -149,42 +154,52 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               >
                 Phone
               </button>
-              {hoveredMenu === 'phone' && (
-                <div
-                  style={styles.submenu}
-                  onMouseEnter={() => setHoveredMenu('phone')}
-                  onMouseLeave={() => setHoveredMenu(null)}
-                >
-                  {[
-                    { key: 'govt-military', label: 'Government and Military' },
-                    { key: 'business', label: 'Business' },
-                    { key: 'journalists', label: 'Journalists' },
-                    { key: 'individuals', label: 'Individuals' }
-                  ].map(item => (
-                    <button
-                      key={item.key}
-                      onClick={() => {
-                        setSelectedSegment(item.key);
-                        setCurrentPage('phone');
-                        setHoveredMenu(null);
-                      }}
-                      style={styles.submenuItem}
-                      onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = 'var(--color-gray-100)';
-                        e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'var(--color-transparent)';
-                        e.target.style.borderLeftColor = 'var(--color-transparent)';
-                      }}
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <AnimatePresence>
+                {hoveredMenu === 'phone' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ 
+                      duration: 0.2, 
+                      ease: "easeOut",
+                      type: "tween"
+                    }}
+                    style={styles.submenu}
+                    onMouseEnter={() => setHoveredMenu('phone')}
+                    onMouseLeave={() => setHoveredMenu(null)}
+                  >
+                    {[
+                      { key: 'govt-military', label: 'Government and Military' },
+                      { key: 'business', label: 'Business' },
+                      { key: 'journalists', label: 'Journalists' },
+                      { key: 'individuals', label: 'Individuals' }
+                    ].map(item => (
+                      <button
+                        key={item.key}
+                        onClick={() => {
+                          setSelectedSegment(item.key);
+                          setCurrentPage('phone');
+                          setHoveredMenu(null);
+                        }}
+                        style={styles.submenuItem}
+                        onMouseEnter={(e) => {
+                          e.target.style.backgroundColor = 'var(--color-gray-100)';
+                          e.target.style.borderLeftColor = 'var(--color-primary-teal)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.backgroundColor = 'var(--color-transparent)';
+                          e.target.style.borderLeftColor = 'var(--color-transparent)';
+                        }}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </li>
-            <li>
+            <li style={styles.navLinkItem}>
               <button
                 onClick={() => setCurrentPage('tech')}
                 style={{
@@ -195,7 +210,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                 Technology
               </button>
             </li>
-            <li>
+            <li style={styles.navLinkItem}>
               <button
                 onClick={() => setCurrentPage('about')}
                 style={{
@@ -206,7 +221,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                 About
               </button>
             </li>
-            <li>
+            <li style={styles.navLinkItem}>
               <button
                 onClick={() => setCurrentPage('contact')}
                 style={{
@@ -245,19 +260,48 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       </nav>
 
       {/* Mobile Dropdown Menu */}
-      {mobileMenuOpen && isMobile && (
-        <div 
-        style={{
-          position: 'fixed',
-          top: '60px',
-          left: 0,
-          right: 0,
-          backgroundColor: 'var(--color-white-98)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid var(--color-gray-200)',
-          zIndex: 40,
-          padding: '1rem 0'
-        }}>
+      <AnimatePresence>
+        {mobileMenuOpen && isMobile && (
+          <>
+            {/* Background Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                zIndex: 35
+              }}
+            />
+            
+            {/* Mobile Menu */}
+            <motion.div 
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -100, opacity: 0 }}
+              transition={{ 
+                duration: 0.3, 
+                ease: "easeOut",
+                type: "tween"
+              }}
+              style={{
+                position: 'fixed',
+                top: '60px',
+                left: 0,
+                right: 0,
+                backgroundColor: 'var(--color-white-98)',
+                backdropFilter: 'blur(20px)',
+                borderBottom: '1px solid var(--color-gray-200)',
+                zIndex: 40,
+                padding: '1rem 0'
+              }}>
           <div style={{ padding: '0 2rem' }}>
             {/* Home */}
             <button
@@ -373,8 +417,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               </button>
             ))}
           </div>
-        </div>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };

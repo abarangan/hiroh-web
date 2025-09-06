@@ -1,0 +1,38 @@
+/* Warm Gray Theme Colors */
+:root {
+  /* Base Colors - Warm Gray Theme */
+  --color-primary-teal: #6b7280;
+  --color-primary-teal-hover: #4b5563;
+  --color-secondary: #374151;
+  
+  /* Base Colors */
+  --color-black: #111827;
+  --color-white: #f9fafb;
+  --color-transparent: transparent;
+  
+  /* Gray Scale - Warm Gray Theme */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Dark Colors - Warm Gray Theme */
+  --color-dark-primary: #1f2937;
+  --color-dark-secondary: #111827;
+  --color-dark-tertiary: #0f172a;
+  
+  /* Accent Colors - Warm Gray Theme */
+  --color-green: #6b7280;
+  --color-red: #dc2626;
+  --color-red-debug: #ff0000;
+  
+  /* Gradient Colors - Warm Gray Theme */
+  --color-teal-15: rgba(107, 114, 128, 0.15);
+  --color-teal-35: rgba(107, 114, 128, 0.35);
+}

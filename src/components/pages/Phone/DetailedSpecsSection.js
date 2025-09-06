@@ -69,7 +69,7 @@ const DetailedSpecsSection = ({ isMobile }) => {
       fontWeight: 'bold',
       marginBottom: isMobile ? '2rem' : '3rem',
       color: 'var(--text-primary)',
-      borderBottom: '3px solid #0d9488',
+      borderBottom: '3px solid var(--color-primary-teal)',
       paddingBottom: '1rem'
     },
     grid: {
