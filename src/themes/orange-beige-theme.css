@@ -1,0 +1,38 @@
+/* Orange & Beige Theme Colors */
+:root {
+  /* Base Colors - Orange & Beige Theme */
+  --color-primary-teal: #e67e22;
+  --color-primary-teal-hover: #d35400;
+  --color-secondary: #524a3f;
+  
+  /* Base Colors */
+  --color-black: #3a3429;
+  --color-white: #faf8f5;
+  --color-transparent: transparent;
+  
+  /* Gray Scale - Orange & Beige Theme */
+  --color-gray-50: #faf8f5;
+  --color-gray-100: #f5f2ed;
+  --color-gray-200: #e8e2d8;
+  --color-gray-300: #d4cbb8;
+  --color-gray-400: #b5a896;
+  --color-gray-500: #8f7f6b;
+  --color-gray-600: #6b5b47;
+  --color-gray-700: #524a3a;
+  --color-gray-800: #3a3429;
+  --color-gray-900: #2d261f;
+  
+  /* Dark Colors - Orange & Beige Theme */
+  --color-dark-primary: #3a3429;
+  --color-dark-secondary: #2d261f;
+  --color-dark-tertiary: #1f1a15;
+  
+  /* Accent Colors - Orange & Beige Theme */
+  --color-green: #8f7f6b;
+  --color-red: #b8865b;
+  --color-red-debug: #ff0000;
+  
+  /* Gradient Colors - Orange & Beige Theme */
+  --color-teal-15: rgba(230, 126, 34, 0.15);
+  --color-teal-35: rgba(230, 126, 34, 0.35);
+}

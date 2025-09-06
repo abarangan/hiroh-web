@@ -1,0 +1,38 @@
+/* Gold Theme Colors */
+:root {
+  /* Base Colors - Gold Theme */
+  --color-primary-teal: #c79c0e;
+  --color-primary-teal-hover: #bd930c;
+  --color-secondary: #291d19;
+  
+  /* Base Colors */
+  --color-black: #1a1611;
+  --color-white: #fefcf7;
+  --color-transparent: transparent;
+  
+  /* Gray Scale - Gold Theme */
+  --color-gray-50: #fefcf7;
+  --color-gray-100: #fdf9f0;
+  --color-gray-200: #f5f0e6;
+  --color-gray-300: #e8ddd0;
+  --color-gray-400: #c4b5a0;
+  --color-gray-500: #9c8b70;
+  --color-gray-600: #7a6b55;
+  --color-gray-700: #5d4f3f;
+  --color-gray-800: #3d3329;
+  --color-gray-900: #2a221c;
+  
+  /* Dark Colors - Gold Theme */
+  --color-dark-primary: #2a221c;
+  --color-dark-secondary: #1a1611;
+  --color-dark-tertiary: #14100d;
+  
+  /* Accent Colors - Gold Theme */
+  --color-green: #8b7355;
+  --color-red: #c44536;
+  --color-red-debug: #ff0000;
+  
+  /* Gradient Colors - Gold Theme */
+  --color-teal-15: rgba(176, 141, 25, 0.15);
+  --color-teal-35: rgba(176, 141, 25, 0.35);
+}
