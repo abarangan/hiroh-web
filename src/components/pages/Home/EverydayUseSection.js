@@ -29,10 +29,46 @@ const EverydayUseSection = ({ isMobile }) => {
   ];
 
   const styles = {
+    section: {
+      backgroundImage: isMobile 
+        ? 'none'
+        : `
+          linear-gradient(135deg, var(--color-black-50) 0%, var(--color-black-30) 100%),
+          url(${process.env.PUBLIC_URL}/images/hiroh-phone-13.jpg)
+        `,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      color: 'var(--text-white)',
+      paddingTop: isMobile ? '0' : ''
+    },
+    imageContainer: {
+      backgroundImage: `
+        linear-gradient(to bottom, 
+          transparent 0%,
+          transparent 60%,
+          var(--color-white) 100%
+        ),
+        linear-gradient(135deg, var(--color-black-50) 0%, var(--color-black-30) 100%),
+        url(${process.env.PUBLIC_URL}/images/hiroh-phone-13.jpg)
+      `,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem 0',
+      margin: '0 -1rem',
+      minHeight: '60vh'
+    },
+    gradientContainer: {
+      marginTop: '-7rem',
+    },
     subtitle: {
       fontSize: '1.25rem', 
       textAlign: 'center', 
-      color: 'var(--text-gray)', 
+      color: 'var(--text-white-90)', 
       maxWidth: '800px', 
       margin: isMobile ? '0 auto 2rem' : '0 auto 4rem', 
       lineHeight: '1.6',
@@ -44,7 +80,9 @@ const EverydayUseSection = ({ isMobile }) => {
       gap: isMobile ? '1rem' : '2rem', 
       maxWidth: '1200px', 
       margin: '0 auto',
-      padding: isMobile ? '0 1rem' : '0'
+      padding: isMobile ? '0 1rem' : '0',
+      position: isMobile ? 'relative' : 'static',
+      zIndex: isMobile ? 1 : 'auto'
     },
     card: {
       backgroundColor: 'var(--bg-white)', 
@@ -70,30 +108,66 @@ const EverydayUseSection = ({ isMobile }) => {
   };
 
   return (
-    <section className="section">
-      <div>
-      <h2 className="section-title" style={{ textAlign: 'center',color: 'var(--text-primary)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
-      <p style={styles.subtitle}>
-        Seamlessly transition between your everyday needs and complete privacy protection.
-      </p>
-
-      <div style={styles.container}>
-        {useCases.map((card, index) => (
-          <div key={index} style={styles.card}>
-            <h3 style={styles.title}>
-              {card.title}
-            </h3>
-            <ul style={styles.featureList}>
-              {card.features.map((feature, featureIndex) => (
-                <li key={featureIndex} style={styles.featureItem}>
-                  ✓ {feature}
-                </li>
-              ))}
-            </ul>
+    <section 
+      className="section"
+      style={styles.section}
+    >
+      {isMobile ? (
+        <>
+          <div style={styles.imageContainer}>
+            <div style={{ padding: '2rem 1rem' }}>
+              <h2 className="section-title" style={{ textAlign: 'center', color: 'var(--text-white)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
+              <p style={{...styles.subtitle, color: 'var(--text-white-90)'}}>
+                Seamlessly transition between your everyday needs and complete privacy protection.
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-      </div>
+          <div style={styles.gradientContainer}>
+            <div style={{ padding: '2rem 1rem' }}>
+              <div style={styles.container}>
+                {useCases.map((card, index) => (
+                  <div key={index} style={styles.card}>
+                    <h3 style={styles.title}>
+                      {card.title}
+                    </h3>
+                    <ul style={styles.featureList}>
+                      {card.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} style={styles.featureItem}>
+                          ✓ {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div>
+          <h2 className="section-title" style={{ textAlign: 'center', color: 'var(--text-white)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
+          <p style={styles.subtitle}>
+            Seamlessly transition between your everyday needs and complete privacy protection.
+          </p>
+
+          <div style={styles.container}>
+            {useCases.map((card, index) => (
+              <div key={index} style={styles.card}>
+                <h3 style={styles.title}>
+                  {card.title}
+                </h3>
+                <ul style={styles.featureList}>
+                  {card.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} style={styles.featureItem}>
+                      ✓ {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 };
