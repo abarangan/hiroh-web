@@ -247,7 +247,7 @@ const GovtMilitaryExtras = ({ isMobile }) => {
       </section>
 
       {/* Section 1 – What is a Mobile SCIF? */}
-      <section className="section" style={{ backgroundColor: '#0b1220', color: 'var(--text-white)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--color-dark-tertiary)', color: 'var(--text-white)' }}>
         <div style={{ ...styles.techGrid }}>
           <div style={styles.techImageContainer}>
             <img
@@ -283,7 +283,7 @@ const GovtMilitaryExtras = ({ isMobile }) => {
       </section>
 
       {/* Section 2 – Role-Specific Benefits */}
-      <section className="section" style={{ backgroundColor: '#0e1628', color: 'var(--text-white)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--color-dark-secondary)', color: 'var(--text-white)' }}>
         <div>
           <h3 style={{ color: 'var(--text-white)', fontSize: isMobile ? '1.25rem' : '1.5rem', fontWeight: 800, marginBottom: '1.5rem' }}>Role-Specific Benefits</h3>
 
@@ -305,7 +305,7 @@ const GovtMilitaryExtras = ({ isMobile }) => {
       </section>
 
       {/* Section 3 – Technology Advantages */}
-      <section className="section" style={{ backgroundColor: '#0b1220', color: 'var(--text-white)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--color-dark-tertiary)', color: 'var(--text-white)' }}>
         <div style={styles.techGrid }>
           <div style={styles.techImageContainer}>
             <img
@@ -337,7 +337,7 @@ const GovtMilitaryExtras = ({ isMobile }) => {
       </section>
 
       {/* Section 5 – Deployment & Procurement */}
-      <section className="section" style={{ backgroundColor: '#0e1628', color: 'var(--text-white)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--color-dark-secondary)', color: 'var(--text-white)' }}>
         <div style={styles.deploymentGrid }>
           <div>
             <h3 style={{...styles.deploymentTitle, color: 'var(--text-white)'}}>
@@ -356,7 +356,7 @@ const GovtMilitaryExtras = ({ isMobile }) => {
       </section>
 
       {/* Final Call to Action (Bottom Banner) */}
-      <section className="section" style={{ backgroundColor: '#111827', color: 'var(--text-white)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--color-black)', color: 'var(--text-white)' }}>
         <div style={{ textAlign: 'center' }}>
           <h3 style={{...styles.finalTitle, color: 'var(--text-white)'}}>
             HIROH. SCIF-level security in your pocket.

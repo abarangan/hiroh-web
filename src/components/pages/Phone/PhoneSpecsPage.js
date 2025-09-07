@@ -17,7 +17,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment }) => {
           textAlign: 'center',
           color: 'var(--text-white)',
           backgroundImage: `
-      linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%),
+      linear-gradient(135deg, var(--color-black-50) 0%, var(--color-black-30) 100%),
       url(${process.env.PUBLIC_URL}/images/hiroh-phone-12.jpg)
     `,
           backgroundSize: 'cover',
