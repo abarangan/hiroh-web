@@ -84,14 +84,14 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
         }}
       >
         <h1 style={styles.heroTitle}>
-          Your Everyday Phone Is Also<br />
-          Your Privacy Phone
+          Your Everyday Phone<br />Is Also<br />
+          Your Private Phone
         </h1>
 
         <div style={styles.heroTags}>
           <span>PREMIUM</span>
-          <span>PRIVATE</span>
           <span>CONVENIENT</span>
+          <span>PRIVATE</span>
         </div>
 
         <div style={styles.buttonContainer}>

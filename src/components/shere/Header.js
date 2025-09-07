@@ -146,7 +146,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               onMouseLeave={() => setHoveredMenu(null)}
             >
               <button
-                onClick={() => setCurrentPage('phone')}
+                onClick={() => {
+                  setSelectedSegment('individuals'); // Set default segment
+                  setCurrentPage('phone');
+                }}
                 style={{
                   ...styles.navLink,
                   ...(currentPage === 'phone' ? styles.navLinkActive : {})
@@ -198,17 +201,6 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                   </motion.div>
                 )}
               </AnimatePresence>
-            </li>
-            <li style={styles.navLinkItem}>
-              <button
-                onClick={() => setCurrentPage('tech')}
-                style={{
-                  ...styles.navLink,
-                  ...(currentPage === 'tech' ? styles.navLinkActive : {})
-                }}
-              >
-                Technology
-              </button>
             </li>
             <li style={styles.navLinkItem}>
               <button
@@ -331,6 +323,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             <div style={{ borderBottom: '1px solid var(--color-gray-100)' }}>
               <button
                 onClick={() => {
+                  setSelectedSegment('individuals');
                   setCurrentPage('phone');
                   setMobileMenuOpen(false);
                 }}
@@ -388,7 +381,6 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
 
             {/* Other Menu Items */}
             {[
-              { key: 'tech', label: 'Technology' },
               { key: 'about', label: 'About' },
               { key: 'contact', label: 'Contact' }
             ].map(item => (

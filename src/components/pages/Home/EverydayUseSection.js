@@ -3,7 +3,7 @@ import React from 'react';
 const EverydayUseSection = ({ isMobile }) => {
   const useCases = [
     {
-      title: 'Business-Ready',
+      title: 'For Work',
       features: [
         'All productivity apps supported',
         '512GB storage for documents',
@@ -11,7 +11,7 @@ const EverydayUseSection = ({ isMobile }) => {
       ]
     },
     {
-      title: 'Personal-Life Friendly',
+      title: 'For Life',
       features: [
         'Media streaming & gaming',
         'Social apps compatible',
@@ -19,9 +19,9 @@ const EverydayUseSection = ({ isMobile }) => {
       ]
     },
     {
-      title: 'Privacy On-Demand',
+      title: 'For Freedom',
       features: [
-        'Toggle secure mode for banking',
+        'Easily toggle secure mode',
         'Private conversations',
         'Anonymous browsing'
       ]
@@ -94,7 +94,8 @@ const EverydayUseSection = ({ isMobile }) => {
       fontSize: isMobile ? '1.5rem' : '1.75rem', 
       fontWeight: 'bold', 
       marginBottom: '1.5rem', 
-      color: 'var(--text-primary)'
+      color: 'var(--text-primary)',
+      textAlign: 'center'
     },
     featureList: {
       listStyle: 'none', 

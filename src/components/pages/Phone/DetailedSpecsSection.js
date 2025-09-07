@@ -16,7 +16,7 @@ const DetailedSpecsSection = ({ isMobile }) => {
       title: 'Camera',
       items: [
         { label: 'Rear Main', value: '108MP Samsung' },
-        { label: 'Wide Angle', value: '13MP' },
+        { label: 'Wide Angle', value: '13MP Sony' },
         { label: 'Macro', value: '2MP' },
         { label: 'Front', value: '32MP Sony' }
       ]
@@ -27,7 +27,7 @@ const DetailedSpecsSection = ({ isMobile }) => {
         { label: 'Size', value: '6.67" AMOLED' },
         { label: 'Refresh Rate', value: '120Hz' },
         { label: 'Brightness', value: '600 nits (1800 peak)' },
-        { label: 'Resolution', value: '2400 x 1080' }
+        { label: 'Resolution', value: '2712 x 1220' }
       ]
     },
     security: {
