@@ -52,6 +52,27 @@ const KeyFeaturesSection = ({ isMobile }) => {
 
   return (
     <section className="section">
+      <div style={{
+        textAlign: 'center',
+        marginBottom: isMobile ? '2rem' : '3rem'
+      }}>
+        <h2 style={{
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          color: 'var(--text-primary)',
+          marginBottom: '0.5rem'
+        }}>
+          Designed for Performance. Built for Privacy.
+        </h2>
+        <p style={{
+          fontSize: '1.125rem',
+          color: 'var(--text-gray)',
+          maxWidth: '600px',
+          margin: '0 auto'
+        }}>
+          Unlike conventional smartphones, Hiroh is engineered to protect your data while delivering flagship-level specs. <br />No trade-offs. Just freedom.
+        </p>
+      </div>
       <div style={styles.container}>
         {features.map((card, index) => (
           <div key={index} style={styles.card}>
@@ -65,7 +86,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
         ))}
       </div>
     </section>
-  );
+  )
 };
 
 export default KeyFeaturesSection;

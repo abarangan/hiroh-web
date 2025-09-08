@@ -204,6 +204,20 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             </li>
             <li style={styles.navLinkItem}>
               <button
+<<<<<<< HEAD
+                onClick={() => setCurrentPage('tech')}
+                style={{
+                  ...styles.navLink,
+                  ...(currentPage === 'tech' ? styles.navLinkActive : {})
+                }}
+              >
+                Technology
+              </button>
+            </li>
+            <li style={styles.navLinkItem}>
+              <button
+=======
+>>>>>>> 3ecf6b3 (minor content changes + bug fix on Phone menu item)
                 onClick={() => setCurrentPage('about')}
                 style={{
                   ...styles.navLink,

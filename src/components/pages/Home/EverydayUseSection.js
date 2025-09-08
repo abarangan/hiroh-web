@@ -3,7 +3,7 @@ import React from 'react';
 const EverydayUseSection = ({ isMobile }) => {
   const useCases = [
     {
-      title: 'Business-Ready',
+      title: 'For Work',
       features: [
         'All productivity apps supported',
         '512GB storage for documents',
@@ -11,7 +11,7 @@ const EverydayUseSection = ({ isMobile }) => {
       ]
     },
     {
-      title: 'Personal-Life Friendly',
+      title: 'For Life',
       features: [
         'Media streaming & gaming',
         'Social apps compatible',
@@ -19,9 +19,9 @@ const EverydayUseSection = ({ isMobile }) => {
       ]
     },
     {
-      title: 'Privacy On-Demand',
+      title: 'For Freedom',
       features: [
-        'Toggle secure mode for banking',
+        'Easily toggle secure mode',
         'Private conversations',
         'Anonymous browsing'
       ]
@@ -85,7 +85,7 @@ const EverydayUseSection = ({ isMobile }) => {
       zIndex: isMobile ? 1 : 'auto'
     },
     card: {
-      backgroundColor: 'var(--bg-white)', 
+      backgroundColor: 'rgba(255, 255, 255, 0.85)',
       padding: isMobile ? '2rem' : '2.5rem', 
       borderRadius: '1rem', 
       boxShadow: '0 10px 30px var(--color-black-10)'
@@ -94,7 +94,8 @@ const EverydayUseSection = ({ isMobile }) => {
       fontSize: isMobile ? '1.5rem' : '1.75rem', 
       fontWeight: 'bold', 
       marginBottom: '1.5rem', 
-      color: 'var(--text-primary)'
+      color: 'var(--text-primary)',
+      textAlign: 'center'
     },
     featureList: {
       listStyle: 'none', 
@@ -117,8 +118,8 @@ const EverydayUseSection = ({ isMobile }) => {
           <div style={styles.imageContainer}>
             <div style={{ padding: '2rem 1rem' }}>
               <h2 className="section-title" style={{ textAlign: 'center', color: 'var(--text-white)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
-              <p style={{...styles.subtitle, color: 'var(--text-white-90)'}}>
-                Seamlessly transition between your everyday needs and complete privacy protection.
+              <p style={{ ...styles.subtitle, color: 'var(--text-white-100)' }}>
+                Most privacy phones force you to sacrifice everyday functionality—leaving you carrying two devices. The HIROH phone is built to be the one device that does it all.
               </p>
             </div>
           </div>
@@ -147,7 +148,7 @@ const EverydayUseSection = ({ isMobile }) => {
         <div>
           <h2 className="section-title" style={{ textAlign: 'center', color: 'var(--text-white)' }}>From Everyday Phone to Privacy Phone in One Click</h2>
           <p style={styles.subtitle}>
-            Seamlessly transition between your everyday needs and complete privacy protection.
+              Most privacy phones force you to sacrifice everyday functionality—leaving you carrying two devices. The HIROH phone is built to be the one device that does it all.
           </p>
 
           <div style={styles.container}>
