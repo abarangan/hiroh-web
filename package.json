@@ -2,7 +2,6 @@
   "name": "hiroh-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://abarangan.github.io/hiroh-web",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.12",
     "@testing-library/dom": "^10.4.1",
@@ -22,7 +21,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run deploy:origin",
+    "deploy:origin": "PUBLIC_URL=https://abarangan.github.io/hiroh-web npm run build && gh-pages -d build -r $(git remote get-url origin)",
+    "deploy:avarana": "PUBLIC_URL=https://hiroh.io npm run build && gh-pages -d build -r $(git remote get-url avarana)"
   },
   "eslintConfig": {
     "extends": [
