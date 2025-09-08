@@ -158,9 +158,15 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       </section>
 
       {/* Section 2 - Image of phone with dimensions */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-white)', padding: '0', position: 'relative' }}>
+      <section style={{
+        backgroundColor: 'var(--bg-secondary)',
+        color: 'var(--text-white)',
+        padding: '0',
+        position: 'relative',
+        width: '100%'  // Ensure full width
+      }}>
         <img
-          src={`${process.env.PUBLIC_URL}/images/ID v8-logo updated.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/hiroh-dimensions.jpg`}
           alt="Hiroh phone with dimensions"
           style={{
             width: '100%',
