@@ -15,10 +15,10 @@ const DetailedSpecsSection = ({ isMobile }) => {
     camera: {
       title: 'Camera',
       items: [
-        { label: 'Rear Main', value: '108MP Samsung' },
-        { label: 'Wide Angle', value: '13MP Sony' },
+        { label: 'Rear Main', value: 'Samsung 108MP' },
+        { label: 'Wide Angle', value: 'Sony 13MP' },
         { label: 'Macro', value: '2MP' },
-        { label: 'Front', value: '32MP Sony' }
+        { label: 'Front', value: 'Sony 32MP' }
       ]
     },
     display: {
@@ -27,7 +27,8 @@ const DetailedSpecsSection = ({ isMobile }) => {
         { label: 'Size', value: '6.67" AMOLED' },
         { label: 'Refresh Rate', value: '120Hz' },
         { label: 'Brightness', value: '600 nits (1800 peak)' },
-        { label: 'Resolution', value: '2712 x 1220' }
+        { label: 'Resolution', value: '2712 x 1220' },
+        { label: 'Protection', value: 'Gorilla Glass Victus' }
       ]
     },
     security: {

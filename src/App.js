@@ -28,7 +28,7 @@ const HIROHWebsite = () => {
 
       {/* Page Content */}
       {currentPage === 'home' && <HomePage isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {currentPage === 'phone' && <PhoneSpecsPage isMobile={isMobile} selectedSegment={selectedSegment} />}
+      {currentPage === 'phone' && <PhoneSpecsPage isMobile={isMobile} selectedSegment={selectedSegment} setCurrentPage={setCurrentPage} />}
       {currentPage === 'about' && <AboutPage isMobile={isMobile} />}
       {currentPage === 'contact' && <ContactPage />}
       
