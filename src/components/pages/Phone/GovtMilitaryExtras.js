@@ -281,10 +281,9 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
               If the switch is off, no app or malware can turn it back on.
             </p>
             <p style={styles.calloutText}>
-              With hardware-level kill switches that electronically disable the camera, microphone,
-              GPS, Wi-Fi, and Bluetooth, using a Hiroh guarantees that no app, malware, spyware,
-              or remote exploit can compromise your device. When these switches are activated,
-              surveillance becomes impossible — period.
+              Hiroh gives you control at the deepest level. A hardware kill switch cuts power to the camera and microphone,
+              while a dedicated switch shuts off GPS, Wi-Fi, and Bluetooth. No app, malware, or remote exploit can bypass
+              these protections. When the switches are on, surveillance isn’t just blocked — it’s impossible.
             </p>
           </div>
         </div>

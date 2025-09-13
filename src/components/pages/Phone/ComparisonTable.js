@@ -14,7 +14,7 @@ const ComparisonTable = ({ isMobile }) => {
     },
     {
       feature: 'Privacy Features',
-      hiroh: 'Hardware kill switches',
+      hiroh: 'Hardware kill switch',
       competitor: 'Software controls only'
     },
     {
