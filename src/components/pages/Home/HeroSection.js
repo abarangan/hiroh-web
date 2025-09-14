@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../ui/Button';
+import VideoModal from '../../ui/VideoModal';
 
 const HeroSection = ({ setCurrentPage,isMobile }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
   const styles = {
     hero: {
       minHeight: '100vh',
@@ -97,9 +100,9 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
         <div style={styles.buttonContainer}>
           <Button
             variant="filled"
-            onClick={() => setCurrentPage('phone')}
+            onClick={() => setIsVideoModalOpen(true)}
           >
-            Shop Now
+            Play Video
           </Button>
           <Button
             variant="outline"
@@ -109,6 +112,13 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
           </Button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoSrc={`${process.env.PUBLIC_URL}/images/hiroh_security-switch.mp4`}
+      />
     </section>
   );
 };

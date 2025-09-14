@@ -21,7 +21,6 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
       fontSize: isMobile ? '1.125rem' : '1.25rem',
       textAlign: 'center',
       color: 'var(--color-gray-300)',
-      marginBottom: isMobile ? '2rem' : '3rem',
       maxWidth: '800px',
       margin: '0 auto',
       marginBottom: isMobile ? '2rem' : '3rem'
