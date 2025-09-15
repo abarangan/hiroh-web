@@ -31,12 +31,12 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
     heroContent: {
       padding: isMobile ? '0 2rem 1.5rem 2rem' : '0 0 2rem 4rem',
       position: 'absolute',
-      bottom: 0,
+      bottom: isMobile ? '3.5rem' : '0',
       left: 0,
       zIndex: 2,
       width: '100%',
       maxWidth: isMobile ? '100%' : '1000px',
-      textAlign: 'left'
+      textAlign: isMobile ? 'center' : 'left'
     },
     heroTitle: {
       fontSize: 'clamp(1.5rem, 8vw, 5rem)',
