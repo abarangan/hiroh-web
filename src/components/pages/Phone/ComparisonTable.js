@@ -14,18 +14,14 @@ const ComparisonTable = ({ isMobile }) => {
     },
     {
       feature: 'Privacy Features',
-      hiroh: 'Hardware kill switches',
+      hiroh: 'Hardware kill switch',
       competitor: 'Software controls only'
     },
     {
       feature: 'Data Collection',
       hiroh: 'Zero tracking',
       competitor: 'Extensive data mining'
-    },
-    {
-      feature: 'Pricing',
-      hiroh: '',
-      competitor: ''
+
     }
   ];
 

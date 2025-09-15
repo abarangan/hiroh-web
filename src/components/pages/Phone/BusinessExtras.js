@@ -21,7 +21,6 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
       fontSize: isMobile ? '1.125rem' : '1.25rem',
       textAlign: 'center',
       color: 'var(--color-gray-300)',
-      marginBottom: isMobile ? '2rem' : '3rem',
       maxWidth: '800px',
       margin: '0 auto',
       marginBottom: isMobile ? '2rem' : '3rem'
@@ -290,7 +289,6 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.grid3Col}>
             {risks.map((risk, index) => (
               <div key={index} style={styles.riskCard}>
-                <div style={styles.riskIcon}>{risk.icon}</div>
                 <h3 style={styles.riskTitle}>{risk.title}</h3>
                 <p style={styles.riskDescription}>{risk.description}</p>
               </div>
@@ -401,7 +399,6 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.grid3Col}>
             {benefits.map((benefit, index) => (
               <div key={index} style={styles.benefitCard}>
-                <div style={styles.benefitIcon}>{benefit.icon}</div>
                 <h3 style={styles.benefitTitle}>{benefit.title}</h3>
                 <p style={styles.benefitDescription}>{benefit.description}</p>
               </div>

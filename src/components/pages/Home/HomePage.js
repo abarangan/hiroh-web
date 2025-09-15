@@ -24,10 +24,6 @@ const HomePage = ({ isMobile, setCurrentPage }) => {
       position: 'relative',
       zIndex: 1,
     },
-    imageContent: {
-      position: 'relative',
-      zIndex: 1,
-    },
   };
   return (
     <>

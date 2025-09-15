@@ -21,7 +21,6 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
       fontSize: isMobile ? '1.125rem' : '1.25rem',
       textAlign: 'center',
       color: 'var(--color-gray-300)',
-      marginBottom: isMobile ? '2rem' : '3rem',
       maxWidth: '800px',
       margin: '0 auto',
       marginBottom: isMobile ? '2rem' : '3rem'
@@ -241,7 +240,6 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.grid3Col}>
             {roles.map((role, index) => (
               <div key={index} style={styles.roleCard}>
-                <div style={styles.roleIcon}>{role.icon}</div>
                 <h3 style={styles.roleTitle}>{role.title}</h3>
                 <p style={styles.roleDescription}>{role.description}</p>
               </div>
@@ -281,10 +279,9 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
               If the switch is off, no app or malware can turn it back on.
             </p>
             <p style={styles.calloutText}>
-              With hardware-level kill switches that electronically disable the camera, microphone,
-              GPS, Wi-Fi, and Bluetooth, using a Hiroh guarantees that no app, malware, spyware,
-              or remote exploit can compromise your device. When these switches are activated,
-              surveillance becomes impossible — period.
+              Hiroh gives you control at the deepest level. A hardware kill switch cuts power to the camera and microphone,
+              while a dedicated switch shuts off GPS, Wi-Fi, and Bluetooth. No app, malware, or remote exploit can bypass
+              these protections. When the switches are on, surveillance isn’t just blocked — it’s impossible.
             </p>
           </div>
         </div>
@@ -297,7 +294,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <h3 style={styles.techTitle}>Deployment & Procurement</h3>
               <p style={styles.deploymentText}>
-                Short text about scalable government/defense rollout.
+                Hiroh phones are designed for enterprise-scale deployment across government agencies, military units, and defense contractors. Our procurement process supports bulk orders with custom configurations, secure supply chain management, and in-country assembly. From small tactical teams to large-scale agency rollouts, Hiroh delivers consistent security standards and seamless integration with existing IT infrastructure.
               </p>
             </div>
             <div style={{ textAlign: 'center' }}>

@@ -22,11 +22,11 @@
     "build:staging": "PUBLIC_URL=https://abarangan.github.io/hiroh-web react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
     "predeploy:staging": "npm run build:staging",
+    "predeploy:production": "npm run build",
     "deploy": "npm run deploy:production",
-    "deploy:production": "npm run build && gh-pages -d build -r $(git remote get-url avarana)",
-    "deploy:staging": "npm run build:staging && gh-pages -d build -r $(git remote get-url origin)"
+    "deploy:production": "gh-pages -d build -r $(git remote get-url avarana)",
+    "deploy:staging": "gh-pages -d build -r $(git remote get-url origin)"
   },
   "eslintConfig": {
     "extends": [

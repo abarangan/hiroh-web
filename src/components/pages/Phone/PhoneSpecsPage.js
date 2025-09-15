@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ComparisonTable from './ComparisonTable';
 import DetailedSpecsSection from './DetailedSpecsSection';
 import GovtMilitaryExtras from './GovtMilitaryExtras';
 import JournalistsExtras from './JournalistsExtras';
 import BusinessExtras from './BusinessExtras';
+import VideoModal from '../../ui/VideoModal';
 
 const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
   // Function to get the appropriate hero image based on selected segment
   const getHeroImage = (segment) => {
     switch (segment) {
@@ -113,23 +116,40 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
             </button>
           )}
           {selectedSegment === 'individuals' && (
-            <button
-              onClick={() => setCurrentPage('contact')}
-              style={{
-                backgroundColor: 'var(--color-primary-teal)',
-                color: 'var(--text-white)',
-                padding: '1rem 2rem',
-                borderRadius: '0.5rem',
-                fontSize: '1.125rem',
-                fontWeight: 'bold',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '2rem'
-              }}
-            >
-              Shop Now
-            </button>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+              <button
+                onClick={() => setCurrentPage('contact')}
+                style={{
+                  backgroundColor: 'var(--color-primary-teal)',
+                  color: 'var(--text-white)',
+                  padding: '1rem 2rem',
+                  borderRadius: '0.5rem',
+                  fontSize: '1.125rem',
+                  fontWeight: 'bold',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'inline-block'
+                }}
+              >
+                Shop Now
+              </button>
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: 'var(--text-white)',
+                  padding: '1rem 2rem',
+                  borderRadius: '0.5rem',
+                  fontSize: '1.125rem',
+                  fontWeight: 'bold',
+                  border: '2px solid var(--text-white)',
+                  cursor: 'pointer',
+                  display: 'inline-block'
+                }}
+              >
+                Play Video
+              </button>
+            </div>
           )}
         </div>
       </section>
@@ -228,6 +248,13 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           <DetailedSpecsSection isMobile={isMobile} />
         </div>
       </section>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoSrc={`${process.env.PUBLIC_URL}/images/hiroh_security-switch.mp4`}
+      />
     </>
   );
 };

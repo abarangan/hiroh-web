@@ -13,7 +13,7 @@ const FAQSection = ({ isMobile }) => {
     },
     {
       q: 'How does privacy mode work?',
-      a: 'Our hardware kill switches physically disconnect cameras, microphones at the circuit level. No software can override this.'
+      a: 'Our hardware kill switch physically disconnects cameras, microphones at the circuit level. No software can override this.'
     },
     {
       q: 'What happens if I lose my phone?',

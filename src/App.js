@@ -5,6 +5,7 @@ import HomePage from './components/pages/Home/HomePage';
 import PhoneSpecsPage from './components/pages/Phone/PhoneSpecsPage';
 import ContactPage from './components/pages/Contact/ContactPage';
 import AboutPage from './components/pages/About/AboutPage';
+import EOSPage from './components/pages/EOS/EOSPage';
 
 const HIROHWebsite = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -29,6 +30,7 @@ const HIROHWebsite = () => {
       {/* Page Content */}
       {currentPage === 'home' && <HomePage isMobile={isMobile} setCurrentPage={setCurrentPage} />}
       {currentPage === 'phone' && <PhoneSpecsPage isMobile={isMobile} selectedSegment={selectedSegment} setCurrentPage={setCurrentPage} />}
+      {currentPage === 'eos' && <EOSPage isMobile={isMobile} setCurrentPage={setCurrentPage} />}
       {currentPage === 'about' && <AboutPage isMobile={isMobile} />}
       {currentPage === 'contact' && <ContactPage />}
       
