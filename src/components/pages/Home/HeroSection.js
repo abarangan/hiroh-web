@@ -39,6 +39,7 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
       textAlign: 'left'
     },
     heroTitle: {
+      fontSize: isMobile ? '2.5rem' : '4rem',
       fontWeight: 'bold',
       color: 'var(--text-white)',
       marginBottom: '1.5rem',
@@ -46,7 +47,7 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
       textShadow: '1px 1px 1px var(--color-black-50)'
     },
     heroSubtitle: {
-      fontSize: '1.75rem',
+      fontSize: isMobile ? '1.25rem' : '1.75rem',
       color: 'var(--text-white-90)',
       marginBottom: '3rem',
       lineHeight: '1.6',
@@ -84,6 +85,7 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
         muted
         loop
         playsInline
+        preload="auto"
       >
         <source src={`${process.env.PUBLIC_URL}/images/HIROH_BGLoop_WEB.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
