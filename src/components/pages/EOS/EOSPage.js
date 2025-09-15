@@ -359,7 +359,6 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
               alt="Customizable widgets and interface in /e/OS"
               style={styles.widgetsImage}
             />
-            <p style={styles.imageCaption}>Customizable widgets and home screen</p>
           </div>
           
           <div style={styles.grid3Col}>
@@ -381,12 +380,14 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
             <p style={styles.sectionSubtitle}>
               The HIROH phone with /e/OS delivers enterprise-grade privacy in a consumer-friendly package.
             </p>
-            <button 
-              onClick={() => setCurrentPage('about')} 
+            <a
+              href="https://e.foundation/e-os/"
+              target="_blank"
+              rel="noopener noreferrer"
               style={styles.ctaButton}
             >
-              Learn More About HIROH
-            </button>
+              Learn More About /e/OS
+            </a>
           </div>
         </div>
       </section>
