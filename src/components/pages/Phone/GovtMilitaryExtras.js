@@ -240,7 +240,6 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.grid3Col}>
             {roles.map((role, index) => (
               <div key={index} style={styles.roleCard}>
-                <div style={styles.roleIcon}>{role.icon}</div>
                 <h3 style={styles.roleTitle}>{role.title}</h3>
                 <p style={styles.roleDescription}>{role.description}</p>
               </div>
@@ -295,7 +294,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <h3 style={styles.techTitle}>Deployment & Procurement</h3>
               <p style={styles.deploymentText}>
-                Short text about scalable government/defense rollout.
+                Hiroh phones are designed for enterprise-scale deployment across government agencies, military units, and defense contractors. Our procurement process supports bulk orders with custom configurations, secure supply chain management, and in-country assembly. From small tactical teams to large-scale agency rollouts, Hiroh delivers consistent security standards and seamless integration with existing IT infrastructure.
               </p>
             </div>
             <div style={{ textAlign: 'center' }}>

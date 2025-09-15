@@ -21,11 +21,7 @@ const ComparisonTable = ({ isMobile }) => {
       feature: 'Data Collection',
       hiroh: 'Zero tracking',
       competitor: 'Extensive data mining'
-    },
-    {
-      feature: 'Pricing',
-      hiroh: '',
-      competitor: ''
+
     }
   ];
 

@@ -48,6 +48,18 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       transition: 'color 0.2s',
       fontFamily: 'inherit'
     },
+    navLinkEOS: {
+      color: 'var(--text-gray)',
+      backgroundColor: 'var(--color-transparent)',
+      border: 'none',
+      cursor: 'pointer',
+      fontWeight: '500',
+      fontSize: '0.875rem',
+      textTransform: 'none',
+      letterSpacing: '0.05em',
+      transition: 'color 0.2s',
+      fontFamily: 'inherit'
+    },
     navLinkActive: {
       color: 'var(--text-primary)'
     },
@@ -201,6 +213,17 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                   </motion.div>
                 )}
               </AnimatePresence>
+            </li>
+            <li style={styles.navLinkItem}>
+              <button
+                onClick={() => setCurrentPage('eos')}
+                style={{
+                  ...styles.navLinkEOS,
+                  ...(currentPage === 'eos' ? styles.navLinkActive : {})
+                }}
+              >
+                /e/OS
+              </button>
             </li>
             <li style={styles.navLinkItem}>
               <button
@@ -381,6 +404,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
 
             {/* Other Menu Items */}
             {[
+                  { key: 'eos', label: '/e/OS' },
               { key: 'about', label: 'About' },
               { key: 'contact', label: 'Contact' }
             ].map(item => (
