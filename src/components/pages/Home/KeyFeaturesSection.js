@@ -21,6 +21,20 @@ const KeyFeaturesSection = ({ isMobile }) => {
   ];
 
   const styles = {
+    tagsContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      gap: isMobile ? '2rem' : '4rem',
+      marginBottom: isMobile ? '2rem' : '3rem',
+      flexWrap: 'wrap'
+    },
+    tag: {
+      color: 'var(--text-primary)',
+      fontSize: isMobile ? '1rem' : '1.25rem',
+      fontWeight: 'bold',
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase'
+    },
     container: {
       display: isMobile ? 'flex' : 'grid',
       flexWrap: isMobile ? 'wrap' : 'none',
@@ -52,6 +66,13 @@ const KeyFeaturesSection = ({ isMobile }) => {
 
   return (
     <section className="section">
+      {/* Tags */}
+      <div style={styles.tagsContainer}>
+        <span style={styles.tag}>PREMIUM</span>
+        <span style={styles.tag}>CONVENIENT</span>
+        <span style={styles.tag}>PRIVATE</span>
+      </div>
+
       <div style={{
         textAlign: 'center',
         marginBottom: isMobile ? '2rem' : '3rem'

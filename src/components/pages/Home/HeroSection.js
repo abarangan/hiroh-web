@@ -9,14 +9,16 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
     hero: {
       minHeight: '100vh',
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      backgroundImage: `url(${process.env.PUBLIC_URL}/images/hiroh-phone-4.jpg)`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
+      overflow: 'hidden'
+    },
+    heroVideo: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      zIndex: 0
     },
     heroOverlay: {
       position: 'absolute',
@@ -27,13 +29,14 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
       zIndex: 1
     },
     heroContent: {
-      padding: isMobile ? '0 2rem' : '0',
-      marginTop: isMobile ? 'calc(60px + 1rem)' : '11rem',
-      position: 'relative',
+      padding: isMobile ? '0 2rem 1.5rem 2rem' : '0 0 2rem 4rem',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
       zIndex: 2,
       width: '100%',
-      maxWidth: isMobile ? '100%' : '1200px',
-      textAlign: 'center'
+      maxWidth: isMobile ? '100%' : '800px',
+      textAlign: 'left'
     },
     heroTitle: {
       fontWeight: 'bold',
@@ -67,35 +70,31 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
     buttonContainer: {
       display: 'flex', 
       gap: isMobile ? '1rem' : '2rem', 
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       maxWidth: isMobile ? '100%' : '400px', 
-      margin: '0 auto'
+      margin: '1rem 0 0 0'
     }
   };
 
   return (
     <section style={styles.hero}>
+      <video
+        style={styles.heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src={`${process.env.PUBLIC_URL}/images/HIROH_BGLoop_WEB.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       <div style={styles.heroOverlay}></div>
 
-      <div
-        style={{
-          ...styles.heroContent,
-          position: 'relative',
-          zIndex: 1,
-          textAlign: 'center',
-          paddingBottom: '4rem',
-        }}
-      >
+      <div style={styles.heroContent}>
         <h1 style={styles.heroTitle}>
           Your Everyday Phone<br />Is Also<br />
           Your Private Phone
         </h1>
-
-        <div style={styles.heroTags}>
-          <span>PREMIUM</span>
-          <span>CONVENIENT</span>
-          <span>PRIVATE</span>
-        </div>
 
         <div style={styles.buttonContainer}>
           <Button
