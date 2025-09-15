@@ -35,16 +35,17 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
       left: 0,
       zIndex: 2,
       width: '100%',
-      maxWidth: isMobile ? '100%' : '800px',
+      maxWidth: isMobile ? '100%' : '1000px',
       textAlign: 'left'
     },
     heroTitle: {
-      fontSize: isMobile ? '2.5rem' : '4rem',
+      fontSize: 'clamp(1.5rem, 8vw, 5rem)',
       fontWeight: 'bold',
       color: 'var(--text-white)',
       marginBottom: '1.5rem',
       lineHeight: '1.1',
-      textShadow: '1px 1px 1px var(--color-black-50)'
+      textShadow: '1px 1px 1px var(--color-black-50)',
+      whiteSpace: 'nowrap'
     },
     heroSubtitle: {
       fontSize: isMobile ? '1.25rem' : '1.75rem',
