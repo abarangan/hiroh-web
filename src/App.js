@@ -23,6 +23,10 @@ const HIROHWebsite = () => {
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
     <div>
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSegment={setSelectedSegment} isMobile={isMobile} />

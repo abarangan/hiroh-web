@@ -17,7 +17,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
     },
     navContent: {
       maxWidth: isMobile ? '100%' : '1200px',
-      padding: isMobile ? '0 1rem' : '0.2rem 2rem',
+      padding: isMobile ? '0 1rem' : '0 2rem',
       height: isMobile ? '60px' : 'auto',
       margin: '0 auto',
       display: 'flex',
@@ -34,7 +34,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
     },
     navLinkItem: {
       position: 'relative',
-      padding: '1rem 0.5rem'
+      padding: '1.2rem 0.5rem'
     },
     navLink: {
       color: 'var(--text-gray)',
@@ -66,7 +66,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
     submenu: {
       position: 'absolute',
       top: '100%',
-      left: '-100%',
+      left: '50%',
       transform: 'translateX(-50%)',
       backgroundColor: 'var(--bg-white)',
       boxShadow: '0 10px 30px var(--color-black-15)',
@@ -75,7 +75,16 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       minWidth: '220px',
       marginTop: '0',
       zIndex: 100,
-      border: '1px solid var(--color-gray-200)'
+      border: '1px solid var(--color-gray-200)',
+      opacity: 0,
+      visibility: 'hidden',
+      transition: 'opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out',
+      transform: 'translateX(-50%) translateY(-10px)'
+    },
+    submenuVisible: {
+      opacity: 1,
+      visibility: 'visible',
+      transform: 'translateX(-50%) translateY(0)'
     },
     submenuItem: {
       display: 'block',
@@ -169,50 +178,39 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               >
                 Phone
               </button>
-              <AnimatePresence>
-                {hoveredMenu === 'phone' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ 
-                      duration: 0.2, 
-                      ease: "easeOut",
-                      type: "tween"
+              <div
+                style={{
+                  ...styles.submenu,
+                  ...(hoveredMenu === 'phone' ? styles.submenuVisible : {})
+                }}
+              >
+                {[
+                  { key: 'govt-military', label: 'Government and Military' },
+                  { key: 'business', label: 'Business' },
+                  { key: 'journalists', label: 'Journalists' },
+                  { key: 'individuals', label: 'Individuals' }
+                ].map(item => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      setSelectedSegment(item.key);
+                      setCurrentPage('phone');
+                      setHoveredMenu(null);
                     }}
-                    style={styles.submenu}
-                    onMouseEnter={() => setHoveredMenu('phone')}
-                    onMouseLeave={() => setHoveredMenu(null)}
+                    style={styles.submenuItem}
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = 'var(--color-gray-100)';
+                      e.target.style.borderLeftColor = 'var(--color-primary-teal)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'var(--color-transparent)';
+                      e.target.style.borderLeftColor = 'var(--color-transparent)';
+                    }}
                   >
-                    {[
-                      { key: 'govt-military', label: 'Government and Military' },
-                      { key: 'business', label: 'Business' },
-                      { key: 'journalists', label: 'Journalists' },
-                      { key: 'individuals', label: 'Individuals' }
-                    ].map(item => (
-                      <button
-                        key={item.key}
-                        onClick={() => {
-                          setSelectedSegment(item.key);
-                          setCurrentPage('phone');
-                          setHoveredMenu(null);
-                        }}
-                        style={styles.submenuItem}
-                        onMouseEnter={(e) => {
-                          e.target.style.backgroundColor = 'var(--color-gray-100)';
-                          e.target.style.borderLeftColor = 'var(--color-primary-teal)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.backgroundColor = 'var(--color-transparent)';
-                          e.target.style.borderLeftColor = 'var(--color-transparent)';
-                        }}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </li>
             <li style={styles.navLinkItem}>
               <button
@@ -275,9 +273,23 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       </nav>
 
       {/* Mobile Dropdown Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && isMobile && (
-          <>
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 35
+            }}
+          >
             {/* Background Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -286,13 +298,12 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               transition={{ duration: 0.3 }}
               onClick={() => setMobileMenuOpen(false)}
               style={{
-                position: 'fixed',
+                position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                zIndex: 35
+                backgroundColor: 'rgba(0, 0, 0, 0.3)'
               }}
             />
             
@@ -307,7 +318,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                 type: "tween"
               }}
               style={{
-                position: 'fixed',
+                position: 'absolute',
                 top: '60px',
                 left: 0,
                 right: 0,
@@ -434,7 +445,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             ))}
           </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
