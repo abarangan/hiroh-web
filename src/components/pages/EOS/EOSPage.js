@@ -3,40 +3,36 @@ import React from 'react';
 const EOSPage = ({ isMobile, setCurrentPage }) => {
   const styles = {
     section: {
-      padding: isMobile ? '4rem 0' : '6rem 0',
       position: 'relative'
     },
     container: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '0 1rem'
     },
     sectionTitle: {
-      fontSize: isMobile ? '2rem' : '3rem',
-      fontWeight: 'bold',
-      textAlign: 'center',
-      color: 'var(--text-white)',
-      marginBottom: '1rem'
-    },
-    sectionSubtitle: {
-      fontSize: isMobile ? '1.125rem' : '1.25rem',
-      textAlign: 'center',
-      color: 'var(--color-gray-300)',
-      maxWidth: '800px',
-      margin: '0 auto',
-      marginBottom: isMobile ? '2rem' : '3rem'
-    },
-    sectionSubtitleBlack: {
-      fontSize: isMobile ? '1.25rem' : '1.5rem',
       textAlign: 'center',
       color: 'var(--text-primary)',
-      maxWidth: '800px',
+    },
+    sectionSubtitle: {
+      fontSize: isMobile ? '1rem' : '1.25rem',
+      textAlign: 'center',
+      color: 'var(--color-gray-300)',
+      maxWidth: isMobile ? '100%' : '800px',
       margin: '0 auto',
-      marginBottom: isMobile ? '2rem' : '3rem'
+      marginBottom: isMobile ? '2rem' : '3rem',
+      lineHeight: isMobile ? '1.5' : '1.6'
+    },
+    sectionSubtitleBlack: {
+      fontSize: isMobile ? '1.125rem' : '1.5rem',
+      textAlign: 'center',
+      color: 'var(--text-primary)',
+      maxWidth: isMobile ? '100%' : '800px',
+      margin: '0 auto',
+      marginBottom: isMobile ? '2rem' : '3rem',
+      lineHeight: isMobile ? '1.5' : '1.6'
     },
     heroSection: {
       backgroundColor: 'var(--bg-secondary)',
-      padding: isMobile ? '4rem 0' : '6rem 0'
     },
     heroContent: {
       display: 'grid',
@@ -46,121 +42,133 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
     },
     heroText: {
       color: 'var(--text-white)',
-      textAlign: isMobile ? 'center' : 'left'
+      textAlign: isMobile ? 'center' : 'left',
+      order: isMobile ? 2 : 1
     },
     heroImage: {
-      textAlign: 'center'
+      textAlign: 'center',
+      order: isMobile ? 1 : 2
     },
     heroTitle: {
-      fontSize: isMobile ? '2.5rem' : '4rem',
+      fontSize: isMobile ? '2rem' : '4rem',
       fontWeight: 'bold',
-      marginBottom: '1.5rem',
-      lineHeight: '1.1',
+      marginBottom: isMobile ? '1rem' : '1.5rem',
+      lineHeight: isMobile ? '1.2' : '1.1',
       color: 'var(--text-white)',
       textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)'
     },
     heroSubtitle: {
-      fontSize: isMobile ? '1.25rem' : '1.5rem',
-      marginBottom: '2rem',
-      lineHeight: '1.4',
+      fontSize: isMobile ? '1.125rem' : '1.5rem',
+      marginBottom: isMobile ? '1.5rem' : '2rem',
+      lineHeight: isMobile ? '1.4' : '1.5',
       color: 'var(--text-white)',
       textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)',
-      maxWidth: '900px',
-      margin: '0 auto 2rem auto'
+      maxWidth: isMobile ? '100%' : '900px',
+      margin: isMobile ? '0 0 1.5rem 0' : '0 auto 2rem auto'
     },
     grid2Col: {
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
       gap: isMobile ? '2rem' : '4rem',
       alignItems: 'center',
-      marginBottom: '3rem'
+      marginBottom: isMobile ? '2rem' : '3rem'
     },
     grid3Col: {
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-      gap: isMobile ? '2rem' : '3rem',
-      marginBottom: '3rem'
+      gap: isMobile ? '1.5rem' : '3rem',
+      marginBottom: isMobile ? '2rem' : '3rem'
     },
     featureCard: {
       backgroundColor: 'var(--color-white-05)',
-      padding: '2rem',
+      padding: isMobile ? '1.5rem' : '2rem',
       borderRadius: '1rem',
       textAlign: 'center',
       border: '1px solid var(--color-gray-600)',
-      transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between'
     },
     featureTitle: {
-      fontSize: '1.25rem',
+      fontSize: isMobile ? '1.125rem' : '1.25rem',
       fontWeight: 'bold',
       color: 'var(--text-white)',
-      marginBottom: '1rem'
+      marginBottom: isMobile ? '0.75rem' : '1rem',
+      lineHeight: isMobile ? '1.3' : '1.2'
     },
     featureDescription: {
-      fontSize: '1rem',
+      fontSize: isMobile ? '0.9rem' : '1rem',
       color: 'var(--color-gray-300)',
-      lineHeight: '1.6'
+      lineHeight: isMobile ? '1.5' : '1.6',
+      flex: 1
     },
     imageSection: {
       textAlign: 'center',
-      marginBottom: '3rem'
+      marginBottom: isMobile ? '2rem' : '3rem'
     },
     image: {
       maxWidth: '100%',
       height: 'auto',
       borderRadius: '1rem',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-      marginBottom: '1rem'
+      marginBottom: isMobile ? '0.75rem' : '1rem'
     },
     widgetsImage: {
-      maxWidth: '35%',
+      maxWidth: isMobile ? '80%' : '35%',
       height: 'auto',
       borderRadius: '1rem',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-      marginBottom: '1rem'
+      marginBottom: isMobile ? '0.75rem' : '1rem'
     },
     privacyImage: {
-      maxWidth: '80%',
+      maxWidth: isMobile ? '100%' : '80%',
       height: 'auto',
       borderRadius: '1rem',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-      marginBottom: '1rem'
+      marginBottom: isMobile ? '0.75rem' : '1rem'
     },
     imageCaption: {
-      fontSize: '0.9rem',
+      fontSize: isMobile ? '0.8rem' : '0.9rem',
       color: 'var(--color-gray-400)',
-      fontStyle: 'italic'
+      fontStyle: 'italic',
+      marginTop: isMobile ? '0.5rem' : '0'
     },
     highlightBox: {
       backgroundColor: 'var(--color-primary-teal)',
-      padding: '2rem',
+      padding: isMobile ? '1.5rem' : '2rem',
       borderRadius: '1rem',
       textAlign: 'center',
-      margin: '3rem 0',
+      margin: isMobile ? '2rem 0' : '3rem 0',
       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
     },
     highlightTitle: {
-      fontSize: '1.5rem',
+      fontSize: isMobile ? '1.25rem' : '1.5rem',
       fontWeight: 'bold',
       color: 'var(--text-white)',
-      marginBottom: '1rem'
+      marginBottom: isMobile ? '0.75rem' : '1rem',
+      lineHeight: isMobile ? '1.3' : '1.2'
     },
     highlightText: {
-      fontSize: '1.125rem',
+      fontSize: isMobile ? '1rem' : '1.125rem',
       color: 'var(--text-white)',
-      lineHeight: '1.6'
+      lineHeight: isMobile ? '1.5' : '1.6'
     },
     ctaButton: {
       backgroundColor: 'var(--color-primary-teal)',
       color: 'var(--text-white)',
-      padding: '1rem 2rem',
+      padding: isMobile ? '0.875rem 1.5rem' : '1rem 2rem',
       borderRadius: '0.5rem',
-      fontSize: '1.125rem',
+      fontSize: isMobile ? '1rem' : '1.125rem',
       fontWeight: 'bold',
       border: 'none',
       cursor: 'pointer',
       display: 'inline-block',
       textDecoration: 'none',
-      transition: 'background-color 0.3s ease'
+      transition: 'background-color 0.3s ease',
+      textAlign: 'center',
+      minWidth: isMobile ? '200px' : 'auto'
     }
   };
 
@@ -209,7 +217,7 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
   return (
     <>
       {/* Hero Section */}
-      <section style={styles.heroSection}>
+      <section className='section' style={styles.heroSection}>
         <div style={styles.container}>
           <div style={styles.heroContent}>
             <div style={styles.heroImage}>
