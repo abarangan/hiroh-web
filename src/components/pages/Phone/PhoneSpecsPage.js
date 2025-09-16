@@ -17,10 +17,10 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       case 'govt-military':
         return 'hiroh-phone-8.jpg'; // Using a different phone image for govt/military
       case 'business':
-        return 'hiroh-phone-11.jpg'; // Using a different phone image for business
+        return 'hiroh-business-web.jpg';
       case 'individuals':
       default:
-        return 'hiroh-coffee-desk.jpg'; // Lifestyle image for individuals
+        return 'hiroh-coffee-desk.jpg';
     }
   };
 
