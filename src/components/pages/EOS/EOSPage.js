@@ -149,7 +149,7 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
       marginBottom: isMobile ? "0.75rem" : "1rem",
     },
     privacyImage: {
-      maxWidth: isMobile ? "100%" : "80%",
+      maxWidth: isMobile ? "80%" : "75%",
       height: "auto",
       borderRadius: "1rem",
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
@@ -367,12 +367,23 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
       <section className="section" style={{ backgroundColor: "var(--bg-primary)" }}>
         <div style={styles.container}>
           <h2 style={{ color: "var(--text-primary)", textAlign: "center" }}>Advanced Privacy Controls</h2>
-          <p style={{ color: "var(--text-primary)", textAlign: "center" }}>
+          <p style={{ color: "var(--text-primary)", textAlign: "center", fontSize: "1.25rem", lineHeight: "1.6", marginBottom: "2rem" }}>
             Take control of your digital privacy with powerful built-in tools and settings.
           </p>
 
-          <div style={styles.grid2Col}>
-            <div style={styles.imageSection}>
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "2rem" : "3rem",
+            alignItems: "center",
+            marginBottom: isMobile ? "2rem" : "3rem",
+          }}>
+            <div style={{
+              ...styles.imageSection,
+              flex: isMobile ? "none" : "0 0 auto",
+              minWidth: isMobile ? "100%" : "300px",
+              maxWidth: isMobile ? "100%" : "400px",
+            }}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/OS-ADV-PRIV1.png`}
                 alt="Advanced privacy settings in /e/OS"
@@ -380,11 +391,26 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
               />
               <p style={{ ...styles.imageCaption, color: "var(--text-primary)" }}>Advanced Privacy Settings</p>
             </div>
-            <div>
-              <h3 style={{ ...styles.featureTitle, color: "var(--text-primary)", textAlign: "left" }}>
+            <div style={{
+              flex: isMobile ? "none" : "1",
+              minWidth: 0,
+            }}>
+              <h3 style={{ 
+                ...styles.featureTitle, 
+                color: "var(--text-primary)", 
+                textAlign: isMobile ? "center" : "left",
+                fontSize: isMobile ? "1.25rem" : "1.5rem",
+                marginBottom: isMobile ? "1rem" : "1.5rem",
+              }}>
                 Escape Digital Surveillance
               </h3>
-              <p style={{ ...styles.featureDescription, color: "var(--text-primary)", textAlign: "left" }}>
+              <p style={{ 
+                ...styles.featureDescription, 
+                color: "var(--text-primary)", 
+                textAlign: isMobile ? "center" : "left",
+                fontSize: isMobile ? "1rem" : "1.125rem",
+                lineHeight: isMobile ? "1.5" : "1.6",
+              }}>
                 The Advanced Privacy widget lets you choose whether to accept tracking, hide your IP address or
                 geolocation when needed. Combined with the built-in ad blocker, enjoy a digital life with very few or no
                 ads in applications and on the web.
@@ -392,18 +418,45 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
             </div>
           </div>
 
-          <div style={styles.grid2Col}>
-            <div>
-              <h3 style={{ ...styles.featureTitle, color: "var(--text-primary)", textAlign: "left" }}>
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? "2rem" : "3rem",
+            alignItems: "center",
+          }}>
+            <div style={{
+              flex: isMobile ? "none" : "1",
+              minWidth: 0,
+              order: isMobile ? 2 : 1,
+            }}>
+              <h3 style={{ 
+                ...styles.featureTitle, 
+                color: "var(--text-primary)", 
+                textAlign: isMobile ? "center" : "left",
+                fontSize: isMobile ? "1.25rem" : "1.5rem",
+                marginBottom: isMobile ? "1rem" : "1.5rem",
+              }}>
                 App Privacy Scoring
               </h3>
-              <p style={{ ...styles.featureDescription, color: "var(--text-primary)", textAlign: "left" }}>
+              <p style={{ 
+                ...styles.featureDescription, 
+                color: "var(--text-primary)", 
+                textAlign: isMobile ? "center" : "left",
+                fontSize: isMobile ? "1rem" : "1.125rem",
+                lineHeight: isMobile ? "1.5" : "1.6",
+              }}>
                 /e/OS can decipher app code to show you which and how many trackers are present, plus the number of
                 permissions required. With an easy-to-read scoring system, you can see which apps are safe and which
                 should be avoided.
               </p>
             </div>
-            <div style={styles.imageSection}>
+            <div style={{
+              ...styles.imageSection,
+              flex: isMobile ? "none" : "0 0 auto",
+              minWidth: isMobile ? "100%" : "300px",
+              maxWidth: isMobile ? "100%" : "400px",
+              order: isMobile ? 1 : 2,
+            }}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/OS-ADV-PRIV2.png`}
                 alt="App privacy analysis in /e/OS"
