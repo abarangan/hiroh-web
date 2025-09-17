@@ -5,24 +5,67 @@ import GovtMilitaryExtras from './GovtMilitaryExtras';
 import JournalistsExtras from './JournalistsExtras';
 import BusinessExtras from './BusinessExtras';
 import VideoModal from '../../ui/VideoModal';
+import Button from '../../ui/Button';
 
 const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  // Function to get the appropriate hero image based on selected segment
-  const getHeroImage = (segment) => {
-    switch (segment) {
-      case 'journalists':
-        return 'letters-1920.jpg';
-      case 'govt-military':
-        return 'hiroh-phone-8.jpg'; // Using a different phone image for govt/military
-      case 'business':
-        return 'hiroh-business-web.jpg';
-      case 'individuals':
-      default:
-        return 'hiroh-coffee-desk.jpg';
+  // Segment configuration data
+  const segmentConfig = {
+    journalists: {
+      heroImage: 'letters-1920.jpg',
+      title: 'Journalism Without Fear.',
+      description: 'Whether you\'re investigating corruption at home or reporting from conflict zones abroad, Hiroh ensures your conversations, sources, and data remain untouchable.',
+      button: {
+        text: 'Protect Your Work',
+        onClick: () => setCurrentPage('contact'),
+        style: 'primary'
+      }
+    },
+    business: {
+      heroImage: 'hiroh-business-web.jpg',
+      title: (
+        <>
+          Business Without Borders.<br />
+          Privacy Without Compromise.
+        </>
+      ),
+      description: 'From Wall Street to Beijing, Hiroh protects your conversations, financial data, and intellectual property against the world\'s most advanced surveillance threats.',
+      button: null
+    },
+    'govt-military': {
+      heroImage: 'hiroh-phone-8.jpg',
+      title: 'Hiroh: Your Mobile SCIF',
+      description: 'Hiroh delivers Military-grade privacy anywhere you go.',
+      button: null
+    },
+    individuals: {
+      heroImage: 'hiroh-coffee-desk.jpg',
+      title: 'The HIROH Phone',
+      description: 'Privacy by design. Security by default. Take back control of your digital life.',
+      button: {
+        type: 'dual',
+        primary: {
+          text: 'Shop Now',
+          onClick: () => setCurrentPage('contact'),
+          style: 'primary'
+        },
+        secondary: {
+          text: 'Play Video',
+          onClick: () => setIsVideoModalOpen(true),
+          style: 'secondary'
+        }
+      }
     }
   };
+
+  // Function to get the appropriate hero image based on selected segment
+  const getHeroImage = (segment) => {
+    return segmentConfig[segment]?.heroImage || segmentConfig.individuals.heroImage;
+  };
+
+  // Get current segment configuration
+  const currentConfig = segmentConfig[selectedSegment] || segmentConfig.individuals;
 
   return (
     <>
@@ -32,7 +75,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           paddingTop: '120px',
           minHeight: '100vh',
           display: 'flex',
-          alignItems: 'flex-end',
+          alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
           color: 'var(--text-white)',
@@ -45,111 +88,46 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div style={{ padding: '2rem', borderRadius: '1rem', marginBottom: '20rem' }}>
+        <div style={{ padding: '2rem', borderRadius: '1rem' }}>
           <h1 style={{ color: 'var(--text-white)' }}>
-            {selectedSegment === 'journalists'
-              ? 'Journalism Without Fear.'
-              : selectedSegment === 'business'
-                ? (
-                  <>
-                    Business Without Borders.<br />
-                    Privacy Without Compromise.
-                  </>
-                )
-                : selectedSegment === 'govt-military'
-                  ? 'Hiroh: Your Mobile SCIF'
-                  : selectedSegment === 'individuals'
-                    ? 'The HIROH Phone'
-                    : 'The HIROH Phone'
-            }
+            {currentConfig.title}
           </h1>
           <p style={{ fontSize: '1.5rem', color: 'var(--text-white)' }}>
-            {selectedSegment === 'journalists' ? (
-              <>
-                Whether you're investigating corruption at home or reporting from conflict zones abroad,
-                Hiroh ensures your conversations, sources, and data remain untouchable.
-              </>
-            ) : selectedSegment === 'business' ? (
-              <>
-                From Wall Street to Beijing, Hiroh protects your conversations, financial data, and intellectual property against the world's most advanced surveillance threats.
-              </>
-            ) : selectedSegment === 'govt-military' ? (
-              <>
-                Hiroh delivers Military-grade privacy anywhere you go.
-              </>
-            ) : selectedSegment === 'individuals' ? (
-              <>
-                Privacy by design. Security by default. Take back control of your digital life.
-              </>
-            ) : (
-              <>
-                {' '}
-                <strong>
-                  {selectedSegment === 'govt-military'
-                            ? 'For Government & Military'
-                            : selectedSegment === 'business'
-                              ? 'For Business'
-                              : selectedSegment === 'journalists'
-                                ? 'For Journalists'
-                                : ''}
-                        </strong>{' '}
-              </>
-            )}
+            {currentConfig.description}
           </p>
-          {selectedSegment === 'journalists' && (
-            <button
-              onClick={() => setCurrentPage('contact')}
-              style={{
-                backgroundColor: 'var(--color-primary-teal)',
-                color: 'var(--text-white)',
-                padding: '1rem 2rem',
-                borderRadius: '0.5rem',
-                fontSize: '1.125rem',
-                fontWeight: 'bold',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'inline-block',
-                marginTop: '2rem'
-              }}
-            >
-              Protect Your Work
-            </button>
-          )}
-          {selectedSegment === 'individuals' && (
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
-              <button
-                onClick={() => setCurrentPage('contact')}
-                style={{
-                  backgroundColor: 'var(--color-primary-teal)',
-                  color: 'var(--text-white)',
-                  padding: '1rem 2rem',
-                  borderRadius: '0.5rem',
-                  fontSize: '1.125rem',
-                  fontWeight: 'bold',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'inline-block'
-                }}
-              >
-                Shop Now
-              </button>
-              <button
-                onClick={() => setIsVideoModalOpen(true)}
-                style={{
-                  backgroundColor: 'transparent',
-                  color: 'var(--text-white)',
-                  padding: '1rem 2rem',
-                  borderRadius: '0.5rem',
-                  fontSize: '1.125rem',
-                  fontWeight: 'bold',
-                  border: '2px solid var(--text-white)',
-                  cursor: 'pointer',
-                  display: 'inline-block'
-                }}
-              >
-                Play Video
-              </button>
-            </div>
+          
+          {/* Render buttons based on configuration */}
+          {currentConfig.button && (
+            <>
+              {currentConfig.button.type === 'dual' ? (
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
+                  <Button
+                    variant="filled"
+                    onClick={currentConfig.button.primary.onClick}
+                    style={{ width: 'auto', padding: '1rem 2rem', fontSize: '1.125rem' }}
+                  >
+                    {currentConfig.button.primary.text}
+                  </Button>
+                  <Button
+                    variant="outlineWhite"
+                    onClick={currentConfig.button.secondary.onClick}
+                    style={{ width: 'auto', padding: '1rem 2rem', fontSize: '1.125rem' }}
+                  >
+                    {currentConfig.button.secondary.text}
+                  </Button>
+                </div>
+              ) : (
+                <div style={{ marginTop: '2rem' }}>
+                  <Button
+                    variant="filled"
+                    onClick={currentConfig.button.onClick}
+                    style={{ width: 'auto', padding: '1rem 2rem', fontSize: '1.125rem' }}
+                  >
+                    {currentConfig.button.text}
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
