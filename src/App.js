@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { init } from '@plausible-analytics/tracker';
 import Header from './components/shere/Header';
 import Footer from './components/shere/Footer';
 import HomePage from './components/pages/Home/HomePage';
@@ -21,6 +22,16 @@ const HIROHWebsite = () => {
     window.addEventListener('resize', checkIsMobile);
 
     return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  useEffect(() => {
+    // Initialize Plausible Analytics (only once)
+    if (!window.plausibleInitialized) {
+      init({
+        domain: 'hiroh.io' // Replace with your actual domain
+      });
+      window.plausibleInitialized = true;
+    }
   }, []);
 
   useEffect(() => {

@@ -1,6 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const VideoModal = ({ isOpen, onClose, videoSrc }) => {
+  const videoRef = useRef(null);
+  const hasTrackedPlay = useRef(false);
+
+  // Track video play event with Plausible
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handlePlay = () => {
+      if (!hasTrackedPlay.current) {
+        hasTrackedPlay.current = true;
+        // Track the video play event
+        if (window.plausible) {
+          window.plausible('Video Played');
+        }
+      }
+    };
+
+    const handleEnded = () => {
+      hasTrackedPlay.current = false;
+    };
+
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, [isOpen]);
+
   // Close modal on Escape key press
   useEffect(() => {
     const handleEscape = (e) => {
@@ -84,6 +115,7 @@ const VideoModal = ({ isOpen, onClose, videoSrc }) => {
           ×
         </button>
         <video
+          ref={videoRef}
           style={styles.video}
           controls
           autoPlay
