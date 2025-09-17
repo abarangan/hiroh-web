@@ -96,7 +96,7 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
       <div style={styles.heroContent}>
         <h1 style={styles.heroTitle}>
           Your Everyday Phone<br />Is Also<br />
-          Your Private Phone
+          Your Privacy Phone
         </h1>
 
         <div style={styles.buttonContainer}>

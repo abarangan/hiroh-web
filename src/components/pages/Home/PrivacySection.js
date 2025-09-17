@@ -4,7 +4,7 @@ const PrivacySection = (isMobile) => {
   const privacyFeatures = [
     {
       title: 'Convenience',
-      description: 'Be in Private mode, and still have all the convenience you\'re used to.'
+      description: 'Be in Privacy mode, and still have all the convenience you\'re used to.'
     },
     {
       title: 'Keep Your Apps',
@@ -15,7 +15,7 @@ const PrivacySection = (isMobile) => {
       description: 'Your files, photos, and conversations stay encrypted.'
     },
     {
-      title: 'Private Browsing',
+      title: 'Browsing With Privacy',
       description: 'Private browsing and communication tools included.'
     },
     {

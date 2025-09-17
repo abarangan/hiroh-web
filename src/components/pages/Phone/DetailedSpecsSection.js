@@ -35,7 +35,7 @@ const DetailedSpecsSection = ({ isMobile }) => {
       title: 'Security & Privacy',
       items: [
         { label: 'Encrypted Storage', value: '2TB SD Slot' },
-        { label: 'Private Mode', value: 'Secure Sandbox' },
+        { label: 'Privacy Mode', value: 'Secure Sandbox' },
         { label: 'Biometric', value: 'Fingerprint' },
         { label: 'Tracking', value: 'Zero Data Harvesting' }
       ]
