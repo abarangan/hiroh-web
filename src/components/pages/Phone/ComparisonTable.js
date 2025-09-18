@@ -13,7 +13,7 @@ const ComparisonTable = ({ isMobile }) => {
       feature: 'Storage',
       hiroh: '512GB + 2TB microSD encrypted',
       samsung: '512GB, no expansion',
-      purism: '32GB + 1TB microSD',
+      purism: '128GB + 1TB microSD',
       purismLibrem: '32GB + 1TB microSD'
     },
     {
@@ -32,17 +32,17 @@ const ComparisonTable = ({ isMobile }) => {
     },
     {
       feature: 'Cameras',
-      hiroh: '108MP + 13MP + 2MP, 32MP Selfie',
+      hiroh: '108MP + 13MP + 2MP Rear, 32MP Selfie',
       samsung: '50MP+ 12MP + 10MP Rear, 12MP Selfie ',
       purism: '13MP Rear, 8MP Selfie',
       purismLibrem: '13MP Rear, 8MP Selfie'
     },
     {
       feature: 'Operating System',
-      hiroh: '/e/OS or Android 16',
-      samsung: 'Android',
-      purism: 'PureOS (Linux)',
-      purismLibrem: 'PureOS (Linux)'
+      hiroh: '/e/OS or Android 16, you choose',
+      samsung: 'Android only',
+      purism: 'PureOS (Linux) only',
+      purismLibrem: 'PureOS (Linux) only'
     },
     {
       feature: 'Battery',
@@ -68,7 +68,7 @@ const ComparisonTable = ({ isMobile }) => {
     {
       feature: 'Price',
       hiroh: '$999 USD (Presale)',
-      samsung: '$999 USD',
+      samsung: '$1,119 USD',
       purism: '$1,999 USD',
       purismLibrem: '$799 USD'
     }
