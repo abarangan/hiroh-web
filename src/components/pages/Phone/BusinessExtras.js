@@ -297,18 +297,18 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
         </div>
       </section>
 
-      {/* Hiroh's Business Solution */}
+      {/* HIROH's Business Solution */}
       <section style={{ ...styles.section, backgroundColor: 'var(--bg-primary)' }}>
         <div style={styles.container}>
           <h2 style={{ ...styles.sectionTitle, color: 'var(--text-primary)' }}>
-            Hiroh's Business Solution
+            HIROH's Business Solution
           </h2>
           
           <div style={styles.grid2Col}>
             <div>
               <img 
                 src={`${process.env.PUBLIC_URL}/images/hiroh-phone-2.jpg`} 
-                alt="Business executive using Hiroh phone"
+                alt="Business executive using HIROH phone"
                 style={styles.solutionImage}
               />
             </div>
@@ -347,7 +347,7 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
         <div style={styles.container}>
           <h2 style={styles.sectionTitle}>Real-World Business Scenarios</h2>
           <p style={styles.sectionSubtitle}>
-            See how Hiroh protects business operations in critical situations.
+            See how HIROH protects business operations in critical situations.
           </p>
           
           <div style={styles.scenariosContainer}>
@@ -365,7 +365,7 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
       <section style={{ ...styles.section, backgroundColor: 'var(--bg-primary)' }}>
         <div style={styles.container}>
           <h2 style={{ ...styles.sectionTitle, color: 'var(--text-primary)' }}>
-            Hiroh vs. Regular Smartphones
+            HIROH vs. Regular Smartphones
           </h2>
           
           <table style={styles.comparisonTable}>
@@ -374,7 +374,7 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
                 <th style={styles.tableHeaderCell}>Feature</th>
                 <th style={styles.tableHeaderCell}>Standard Phone</th>
                 <th style={styles.tableHeaderCell}>Encrypted Apps</th>
-                <th style={styles.tableHeaderCell}>Hiroh</th>
+                <th style={styles.tableHeaderCell}>HIROH</th>
               </tr>
             </thead>
             <tbody>
@@ -413,7 +413,7 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.ctaSection}>
             <h2 style={styles.ctaTitle}>Protect Your Business. Protect Your Future.</h2>
             <p style={styles.ctaSubtitle}>
-              Hiroh is the ultimate business phone for executives, bankers, and global travelers. When reputation and billions are at stake, trust nothing less.
+              HIROH is the ultimate business phone for executives, bankers, and global travelers. When reputation and billions are at stake, trust nothing less.
             </p>
             <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
               Inquiries

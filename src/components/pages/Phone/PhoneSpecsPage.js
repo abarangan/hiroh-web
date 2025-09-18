@@ -15,7 +15,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
     journalists: {
       heroImage: 'letters-1920.jpg',
       title: 'Journalism Without Fear.',
-      description: 'Whether you\'re investigating corruption at home or reporting from conflict zones abroad, Hiroh ensures your conversations, sources, and data remain untouchable.',
+      description: 'Whether you\'re investigating corruption at home or reporting from conflict zones abroad, HIROH ensures your conversations, sources, and data remain untouchable.',
       button: {
         text: 'Protect Your Work',
         onClick: () => setCurrentPage('contact'),
@@ -30,13 +30,13 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           Privacy Without Compromise.
         </>
       ),
-      description: 'From Wall Street to Beijing, Hiroh protects your conversations, financial data, and intellectual property against the world\'s most advanced surveillance threats.',
+      description: 'From Wall Street to Beijing, HIROH protects your conversations, financial data, and intellectual property against the world\'s most advanced surveillance threats.',
       button: null
     },
     'govt-military': {
       heroImage: 'podium-web.jpg',
-      title: 'Hiroh: Your Mobile SCIF',
-      description: 'Hiroh delivers Military-grade privacy anywhere you go.',
+      title: 'HIROH: Your Mobile SCIF',
+      description: 'HIROH delivers Military-grade privacy anywhere you go.',
       button: null
     },
     individuals: {
@@ -148,7 +148,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
               It's not software that is keeping you safe.
             </p>
             <p style={{ fontSize: '1.125rem', lineHeight: '1.8', color: 'var(--text-gray)' }}>
-              Unlike software toggles, Hiroh disables the cameras and microphones at the circuit-level.
+              Unlike software toggles, HIROH disables the cameras and microphones at the circuit-level.
               Once disabled with the switch, the circuits cannot be enabled by hackers, ensuring absolute privacy.
             </p>
           </div>
@@ -165,7 +165,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       }}>
         <img
           src={`${process.env.PUBLIC_URL}/images/hiroh-dimensions.jpg`}
-          alt="Hiroh phone with dimensions"
+          alt="HIROH phone with dimensions"
           style={{
             width: '100%',
             height: 'auto',
@@ -201,7 +201,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           </h2>
           <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
             <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'var(--text-white)', marginBottom: '1.5rem' }}>
-              The Hiroh Phone ships with the e/OS operating system standard, or can be ordered with Android 16.
+              The HIROH Phone ships with the e/OS operating system standard, or can be ordered with Android 16.
             </p>
           </div>
         </div>
@@ -212,7 +212,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         <div>
           <h2 style={{textAlign: 'center',color: 'var(--text-primary)', marginBottom: '1rem'}}>How We Compare</h2>
           <p style={{ fontSize: '1.25rem', textAlign: 'center', color: 'var(--text-gray)', margin: isMobile ? '0 auto 2rem' : '0 auto 4rem', lineHeight: '1.6' }}>
-            See how HIROH stacks up against flagship competitors.
+            See how HIROH stacks up against competitors.
           </p>
 
           <div style={{ overflowX: 'auto', padding: '0 1rem', paddingBottom: '2rem' }}>

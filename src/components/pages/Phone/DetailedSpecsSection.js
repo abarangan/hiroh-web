@@ -26,7 +26,7 @@ const DetailedSpecsSection = ({ isMobile }) => {
       items: [
         { label: 'Size', value: '6.67" AMOLED' },
         { label: 'Refresh Rate', value: '120Hz' },
-        { label: 'Brightness', value: '600 nits (1800 peak)' },
+        { label: 'Brightness', value: '1200 nits (1800 peak)' },
         { label: 'Resolution', value: '2712 x 1220' },
         { label: 'Protection', value: 'Gorilla Glass Victus' }
       ]

@@ -247,11 +247,11 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
 
   const testimonials = [
     {
-      quote: "Hiroh lets me interview sources without fear of spyware listening in.",
+      quote: "HIROH lets me interview sources without fear of spyware listening in.",
       author: "Investigative journalist, EU"
     },
     {
-      quote: "Crossing hostile borders with Hiroh gives me peace of mind.",
+      quote: "Crossing hostile borders with HIROH gives me peace of mind.",
       author: "Conflict reporter, Middle East"
     }
   ];
@@ -277,7 +277,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
         </div>
       </section>
 
-      {/* Hiroh's Protection */}
+      {/* HIROH's Protection */}
       <section style={{ ...styles.section, backgroundColor: 'var(--bg-primary)' }}>
         <div style={styles.container}>
           <h2 style={{ ...styles.sectionTitle, color: 'var(--text-primary)' }}>
@@ -288,7 +288,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <img 
                 src={`${process.env.PUBLIC_URL}/images/hiroh-phone-1.jpg`} 
-                alt="Hiroh Phone with Kill Switch toggles"
+                alt="HIROH Phone with Kill Switch toggles"
                 style={styles.protectionImage}
               />
             </div>
@@ -327,7 +327,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
         <div style={styles.container}>
           <h2 style={styles.sectionTitle}>Real-World Scenarios</h2>
           <p style={styles.sectionSubtitle}>
-            See how Hiroh protects journalists in critical situations.
+            See how HIROH protects journalists in critical situations.
           </p>
           
           <div style={styles.scenariosContainer}>
@@ -341,11 +341,11 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
         </div>
       </section>
 
-      {/* Why Hiroh is Different */}
+      {/* Why HIROH is Different */}
       <section style={{ ...styles.section, backgroundColor: 'var(--bg-primary)' }}>
         <div style={styles.container}>
           <h2 style={{ ...styles.sectionTitle, color: 'var(--text-primary)' }}>
-            Why Hiroh is Different
+            Why HIROH is Different
           </h2>
           
           <table style={styles.comparisonTable}>
@@ -354,7 +354,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
                 <th style={styles.tableHeaderCell}>Feature</th>
                 <th style={styles.tableHeaderCell}>Regular Phones</th>
                 <th style={styles.tableHeaderCell}>"Encrypted" Apps</th>
-                <th style={styles.tableHeaderCell}>Hiroh</th>
+                <th style={styles.tableHeaderCell}>HIROH</th>
               </tr>
             </thead>
             <tbody>
@@ -393,7 +393,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
           <div style={styles.ctaSection}>
             <h2 style={styles.ctaTitle}>Protect Your Sources. Protect Yourself.</h2>
             <p style={styles.ctaSubtitle}>
-              Hiroh is the first phone designed for journalists, by privacy experts. Make surveillance impossible.
+              HIROH is the first phone designed for journalists, by privacy experts. Make surveillance impossible.
             </p>
             <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
               Request a Demo

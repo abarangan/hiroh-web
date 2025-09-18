@@ -255,7 +255,7 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
               <div style={styles.heroImageContainer}>
                 <img
                   src={`${process.env.PUBLIC_URL}/images/Hiroh+Launcher6.png`}
-                  alt="Hiroh phone with /e/OS interface"
+                  alt="HIROH phone with /e/OS interface"
                   style={{
                     maxWidth: "100%",
                     height: "auto",
@@ -334,7 +334,7 @@ const EOSPage = ({ isMobile, setCurrentPage }) => {
             <div style={styles.imageSection}>
               <img
                 src={`${process.env.PUBLIC_URL}/images/Hiroh+Launcher8.png`}
-                alt="Hiroh phone with /e/OS launcher interface"
+                alt="HIROH phone with /e/OS launcher interface"
                 style={styles.image}
               />
             </div>

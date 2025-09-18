@@ -12,7 +12,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
     },
     {
       title: 'Stunning Display',
-      description: '6.67" AMOLED screen, 120Hz refresh, 600 nits with peak 1800 nits brightness.'
+      description: '6.67" AMOLED screen, 120Hz refresh, 1200 nits with peak 1800 nits brightness.'
     },
     {
       title: 'Encrypted SD Storage',
@@ -70,7 +70,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
       <div style={styles.tagsContainer}>
         <span style={styles.tag}>PREMIUM</span>
         <span style={styles.tag}>CONVENIENT</span>
-        <span style={styles.tag}>PRIVATE</span>
+        <span style={styles.tag}>SECURE</span>
       </div>
 
       <div style={{
@@ -91,7 +91,7 @@ const KeyFeaturesSection = ({ isMobile }) => {
           maxWidth: '600px',
           margin: '0 auto'
         }}>
-          Unlike conventional smartphones, Hiroh is engineered to protect your data while delivering flagship-level specs. <br />No trade-offs. Just freedom.
+          Unlike conventional smartphones, HIROH is engineered to protect your data while delivering flagship-level specs. <br />No trade-offs. Just freedom.
         </p>
       </div>
       <div style={styles.container}>

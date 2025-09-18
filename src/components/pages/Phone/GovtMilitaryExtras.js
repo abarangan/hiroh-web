@@ -194,9 +194,9 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
       {/* Hero Section */}
       <section style={{ ...styles.section, backgroundColor: 'var(--bg-secondary)' }}>
         <div style={styles.container}>
-          <h2 style={styles.sectionTitle}>Hiroh: Your Mobile SCIF</h2>
+          <h2 style={styles.sectionTitle}>HIROH: Your Mobile SCIF</h2>
           <p style={styles.sectionSubtitle}>
-            It's not Software. It's Physics. Hiroh cuts the physical circuit, delivering Military-grade privacy, anywhere you go.
+            It's not Software. It's Physics. HIROH cuts the physical circuit, delivering Military-grade privacy, anywhere you go.
           </p>
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
@@ -213,14 +213,14 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <img 
                 src={`${process.env.PUBLIC_URL}/images/hiroh-phone-1.jpg`}
-                alt="Hiroh phone close-up"
+                alt="HIROH phone close-up"
                 style={styles.phoneImage}
               />
             </div>
             <div>
               <h3 style={styles.scifTitle}>When security is mission-critical.</h3>
               <p style={styles.scifText}>
-                The Hiroh phone is designed to function as a Mobile SCIF (Sensitive Compartmented Information Facility),
+                The HIROH phone is designed to function as a Mobile SCIF (Sensitive Compartmented Information Facility),
                 ensuring that classified communications, mission data, and sensitive conversations remain fully protected,
                 even in hostile environments.
               </p>
@@ -255,7 +255,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <img 
                 src={`${process.env.PUBLIC_URL}/images/hiroh-phone-3.jpg`}
-                alt="Hiroh Kill Switch Circuit Cutoff diagram"
+                alt="HIROH Kill Switch Circuit Cutoff diagram"
                 style={styles.techImage}
               />
             </div>
@@ -263,7 +263,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
               <h3 style={styles.techTitle}>Unhackable by Design</h3>
               <p style={styles.techDescription}>
                 Carry a field-ready secure device that prevents cyber infiltration, geo-tracking, and communications
-                leaks during sensitive operations. Hiroh doesn't just protect you. It denies adversaries the ability
+                leaks during sensitive operations. HIROH doesn't just protect you. It denies adversaries the ability
                 to attack in the first place.
               </p>
             </div>
@@ -279,7 +279,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
               If the switch is off, no app or malware can turn it back on.
             </p>
             <p style={styles.calloutText}>
-              Hiroh gives you control at the deepest level. A hardware kill switch cuts power to the camera and microphone,
+              HIROH gives you control at the deepest level. A hardware kill switch cuts power to the camera and microphone,
               while a dedicated switch shuts off GPS, Wi-Fi, and Bluetooth. No app, malware, or remote exploit can bypass
               these protections. When the switches are on, surveillance isn’t just blocked — it’s impossible.
             </p>
@@ -294,7 +294,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             <div>
               <h3 style={styles.techTitle}>Deployment & Procurement</h3>
               <p style={styles.deploymentText}>
-                Hiroh phones are designed for enterprise-scale deployment across government agencies, military units, and defense contractors. Our procurement process supports bulk orders with custom configurations, secure supply chain management, and in-country assembly. From small tactical teams to large-scale agency rollouts, Hiroh delivers consistent security standards and seamless integration with existing IT infrastructure.
+                HIROH phones are designed for enterprise-scale deployment across government agencies, military units, and defense contractors. Our procurement process supports bulk orders with custom configurations, secure supply chain management, and in-country assembly. From small tactical teams to large-scale agency rollouts, HIROH delivers consistent security standards and seamless integration with existing IT infrastructure.
               </p>
             </div>
             <div style={{ textAlign: 'center' }}>
