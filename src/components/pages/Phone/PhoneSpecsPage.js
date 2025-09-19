@@ -34,7 +34,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       button: null
     },
     'govt-military': {
-      heroImage: 'podium-web.jpg',
+      heroImage: 'hiroh-in-hand-web.jpg',
       title: 'HIROH: Your Mobile SCIF',
       description: 'HIROH delivers Military-grade privacy anywhere you go.',
       button: null
