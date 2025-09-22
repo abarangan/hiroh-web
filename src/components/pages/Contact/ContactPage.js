@@ -29,7 +29,7 @@ const ContactPage = () => {
   };
 
   return (
-    <section className='section'>
+    <section className='section' style={{ paddingBottom: '2rem' }}>
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         <h2 className='sectionTitle' style={{textAlign: 'center',marginTop:'3rem'}}>Contact Us</h2>
         <p style={{ textAlign: 'center', fontSize: '1.2rem', color: 'var(--text-gray)', marginBottom: '4rem' }}>
@@ -175,6 +175,35 @@ const ContactPage = () => {
             Send Message
           </button>
         </form>
+
+        {/* Company Address */}
+        <div style={{
+          textAlign: 'center',
+          marginTop: '16rem',
+          padding: '1.5rem',
+          backgroundColor: 'transparent',
+          borderRadius: '1rem',
+          maxWidth: '400px',
+          margin: '4rem auto 0'
+        }}>
+          <h3 style={{
+            color: 'var(--text-primary)',
+            fontSize: '1.25rem',
+            marginBottom: '0.5rem',
+            fontWeight: '600'
+          }}>
+            Avarana Technologies, LLC
+          </h3>
+          <p style={{
+            color: 'var(--text-gray)',
+            fontSize: '1rem',
+            lineHeight: '1.6',
+            margin: 0
+          }}>
+            1309 Coffeen Avenue Suite 1200<br />
+            Sheridan, WY 82801
+          </p>
+        </div>
       </div>
     </section>
   );

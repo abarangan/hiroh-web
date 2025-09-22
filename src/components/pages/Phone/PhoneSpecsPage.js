@@ -47,7 +47,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         type: 'dual',
         primary: {
           text: 'Shop Now',
-          onClick: () => setCurrentPage('contact'),
+          onClick: () => window.open('https://murena.com/shop/smartphones/brand-new/hiroh-phone-powered-by-murena-pre-sale/', '_blank'),
           style: 'primary'
         },
         secondary: {

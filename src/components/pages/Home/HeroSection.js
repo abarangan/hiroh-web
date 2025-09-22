@@ -108,9 +108,9 @@ const HeroSection = ({ setCurrentPage,isMobile }) => {
           </Button>
           <Button
             variant="outline"
-            onClick={() => setCurrentPage('phone')}
+            onClick={() => window.open('https://murena.com/shop/smartphones/brand-new/hiroh-phone-powered-by-murena-pre-sale/', '_blank')}
           >
-            Learn More
+            Pre-Order Now
           </Button>
         </div>
       </div>
