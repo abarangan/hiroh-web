@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "https://abarangan.github.io/hiroh-web/static/css/main.d7756f61.css",
-    "main.js": "https://abarangan.github.io/hiroh-web/static/js/main.141a8873.js",
+    "main.js": "https://abarangan.github.io/hiroh-web/static/js/main.8644cd28.js",
     "static/js/453.1a54f7e1.chunk.js": "https://abarangan.github.io/hiroh-web/static/js/453.1a54f7e1.chunk.js",
     "index.html": "https://abarangan.github.io/hiroh-web/index.html",
     "main.d7756f61.css.map": "https://abarangan.github.io/hiroh-web/static/css/main.d7756f61.css.map",
-    "main.141a8873.js.map": "https://abarangan.github.io/hiroh-web/static/js/main.141a8873.js.map",
+    "main.8644cd28.js.map": "https://abarangan.github.io/hiroh-web/static/js/main.8644cd28.js.map",
     "453.1a54f7e1.chunk.js.map": "https://abarangan.github.io/hiroh-web/static/js/453.1a54f7e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d7756f61.css",
-    "static/js/main.141a8873.js"
+    "static/js/main.8644cd28.js"
   ]
 }
