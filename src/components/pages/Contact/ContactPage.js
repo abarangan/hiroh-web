@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const ContactPage = () => {
   const [formStatus, setFormStatus] = useState('');
+
+  const obfuscatedPhone = useMemo(() => {
+    const codes = [43, 49, 32, 40, 52, 52, 51, 41, 32, 52, 50, 45, 72, 73, 82, 79, 72];
+    return String.fromCharCode(...codes);
+  }, []);
+
+  const dialablePhone = useMemo(() => {
+    const codes = [43, 49, 52, 52, 51, 52, 50, 52, 52, 55, 54, 52];
+    return String.fromCharCode(...codes);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,10 +75,10 @@ const ContactPage = () => {
         <form
           onSubmit={handleSubmit}
           style={{
-            backgroundColor: 'var(--bg-white)',
+            backgroundColor: 'var(--color-gray-200)',
             padding: '2rem',
             borderRadius: '1rem',
-            boxShadow: '0 10px 30px var(--color-black-10)'
+            boxShadow: '0 12px 32px rgba(58, 46, 35, 0.15)'
           }}
         >
           {/* Hidden Formspree configuration fields */}
@@ -202,6 +212,15 @@ const ContactPage = () => {
           }}>
             1309 Coffeen Avenue Suite 1200<br />
             Sheridan, WY 82801
+          </p>
+          <p style={{
+            color: 'var(--text-gray)',
+            fontSize: '1rem',
+            marginTop: '0.75rem'
+          }}>
+            <a href={`tel:${dialablePhone}`} style={{ color: 'var(--text-gray)', textDecoration: 'none' }}>
+              {obfuscatedPhone}
+            </a>
           </p>
         </div>
       </div>
