@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { init } from '@plausible-analytics/tracker';
 import Header from './components/shere/Header';
 import Footer from './components/shere/Footer';
@@ -8,9 +9,34 @@ import ContactPage from './components/pages/Contact/ContactPage';
 import AboutPage from './components/pages/About/AboutPage';
 import EOSPage from './components/pages/EOS/EOSPage';
 
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.search]);
+
+  return null;
+};
+
+const AppLayout = ({ isMobile }) => (
+  <>
+    <ScrollToTop />
+    <Header isMobile={isMobile} />
+    <Routes>
+      <Route path="/" element={<HomePage isMobile={isMobile} />} />
+      <Route path="/phone" element={<PhoneSpecsPage isMobile={isMobile} />} />
+      <Route path="/phone/:segment" element={<PhoneSpecsPage isMobile={isMobile} />} />
+      <Route path="/eos" element={<EOSPage isMobile={isMobile} />} />
+      <Route path="/about" element={<AboutPage isMobile={isMobile} />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+    <Footer />
+  </>
+);
+
 const HIROHWebsite = () => {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [selectedSegment, setSelectedSegment] = useState('individuals');
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -25,32 +51,18 @@ const HIROHWebsite = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize Plausible Analytics (only once)
     if (!window.plausibleInitialized) {
       init({
-        domain: 'hiroh.io' // Replace with your actual domain
+        domain: 'hiroh.io'
       });
       window.plausibleInitialized = true;
     }
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
-
   return (
-    <div>
-      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} setSelectedSegment={setSelectedSegment} isMobile={isMobile} />
-
-      {/* Page Content */}
-      {currentPage === 'home' && <HomePage isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {currentPage === 'phone' && <PhoneSpecsPage isMobile={isMobile} selectedSegment={selectedSegment} setCurrentPage={setCurrentPage} />}
-      {currentPage === 'eos' && <EOSPage isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {currentPage === 'about' && <AboutPage isMobile={isMobile} />}
-      {currentPage === 'contact' && <ContactPage />}
-      
-      <Footer />
-    </div>
+    <Router>
+      <AppLayout isMobile={isMobile} />
+    </Router>
   );
 };
 
