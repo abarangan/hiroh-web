@@ -1,6 +1,6 @@
 import React from "react";
 
-const EOSPage = ({ isMobile, setCurrentPage }) => {
+const EOSPage = ({ isMobile }) => {
   const styles = {
     section: {
       position: "relative",

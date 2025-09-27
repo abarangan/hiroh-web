@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
+const GovtMilitaryExtras = ({ isMobile }) => {
+  const navigate = useNavigate();
   const styles = {
     container: {
       maxWidth: '1200px',
@@ -199,7 +201,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
             It's not Software. It's Physics. HIROH cuts the physical circuit, delivering Military-grade privacy, anywhere you go.
           </p>
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
+            <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
               Request a Demo
             </button>
           </div>
@@ -298,7 +300,7 @@ const GovtMilitaryExtras = ({ isMobile, setCurrentPage }) => {
               </p>
             </div>
             <div style={{ textAlign: 'center' }}>
-              <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
+              <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
                 Contact Defense Sales
               </button>
             </div>

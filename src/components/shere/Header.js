@@ -1,9 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 
-const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) => {
+const Header = ({ isMobile }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  const isPhoneActive = location.pathname === '/phone' || location.pathname.startsWith('/phone/');
+  const phoneSegments = [
+    { key: 'govt-military', label: 'Government and Military' },
+    { key: 'business', label: 'Business' },
+    { key: 'journalists', label: 'Journalists' },
+    { key: 'individuals', label: 'Individuals' }
+  ];
+
+  const getPhonePath = (segment) => (
+    segment === 'individuals' ? '/phone' : `/phone/${segment}`
+  );
 
   const styles = {
     nav: {
@@ -67,7 +86,6 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       position: 'absolute',
       top: '100%',
       left: '50%',
-      transform: 'translateX(-50%)',
       backgroundColor: 'var(--bg-white)',
       boxShadow: '0 10px 30px var(--color-black-15)',
       borderRadius: '0.75rem',
@@ -124,7 +142,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
       <nav style={styles.nav}>
         <div style={styles.navContent}>
           <button
-            onClick={() => setCurrentPage('home')}
+            onClick={() => navigate('/')}
             style={{
               background: 'none',
               border: 'none',
@@ -152,10 +170,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
           }}>
             <li style={styles.navLinkItem}>
               <button
-                onClick={() => setCurrentPage('home')}
+                onClick={() => navigate('/')}
                 style={{
                   ...styles.navLink,
-                  ...(currentPage === 'home' ? styles.navLinkActive : {})
+                  ...(location.pathname === '/' ? styles.navLinkActive : {})
                 }}
               >
                 Home
@@ -167,13 +185,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
               onMouseLeave={() => setHoveredMenu(null)}
             >
               <button
-                onClick={() => {
-                  setSelectedSegment('individuals'); // Set default segment
-                  setCurrentPage('phone');
-                }}
+                onClick={() => navigate('/phone')}
                 style={{
                   ...styles.navLink,
-                  ...(currentPage === 'phone' ? styles.navLinkActive : {})
+                  ...(isPhoneActive ? styles.navLinkActive : {})
                 }}
               >
                 Phone
@@ -184,17 +199,11 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                   ...(hoveredMenu === 'phone' ? styles.submenuVisible : {})
                 }}
               >
-                {[
-                  { key: 'govt-military', label: 'Government and Military' },
-                  { key: 'business', label: 'Business' },
-                  { key: 'journalists', label: 'Journalists' },
-                  { key: 'individuals', label: 'Individuals' }
-                ].map(item => (
+                {phoneSegments.map(item => (
                   <button
                     key={item.key}
                     onClick={() => {
-                      setSelectedSegment(item.key);
-                      setCurrentPage('phone');
+                      navigate(getPhonePath(item.key));
                       setHoveredMenu(null);
                     }}
                     style={styles.submenuItem}
@@ -214,10 +223,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             </li>
             <li style={styles.navLinkItem}>
               <button
-                onClick={() => setCurrentPage('eos')}
+                onClick={() => navigate('/eos')}
                 style={{
                   ...styles.navLinkEOS,
-                  ...(currentPage === 'eos' ? styles.navLinkActive : {})
+                  ...(location.pathname.startsWith('/eos') ? styles.navLinkActive : {})
                 }}
               >
                 /e/OS
@@ -225,10 +234,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             </li>
             <li style={styles.navLinkItem}>
               <button
-                onClick={() => setCurrentPage('about')}
+                onClick={() => navigate('/about')}
                 style={{
                   ...styles.navLink,
-                  ...(currentPage === 'about' ? styles.navLinkActive : {})
+                  ...(location.pathname.startsWith('/about') ? styles.navLinkActive : {})
                 }}
               >
                 About
@@ -236,10 +245,10 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             </li>
             <li style={styles.navLinkItem}>
               <button
-                onClick={() => setCurrentPage('contact')}
+                onClick={() => navigate('/contact')}
                 style={{
                   ...styles.navLink,
-                  ...(currentPage === 'contact' ? styles.navLinkActive : {})
+                  ...(location.pathname.startsWith('/contact') ? styles.navLinkActive : {})
                 }}
               >
                 Contact
@@ -332,7 +341,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             {/* Home */}
             <button
               onClick={() => {
-                setCurrentPage('home');
+                    navigate('/');
                 setMobileMenuOpen(false);
               }}
               style={{
@@ -342,9 +351,9 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                color: currentPage === 'home' ? 'var(--text-primary)' : 'var(--text-gray)',
+                color: location.pathname === '/' ? 'var(--text-primary)' : 'var(--text-gray)',
                 fontSize: '1rem',
-                fontWeight: currentPage === 'home' ? '600' : '500',
+                fontWeight: location.pathname === '/' ? '600' : '500',
                 padding: '1rem 0',
                 borderBottom: '1px solid var(--color-gray-100)',
                 fontFamily: 'inherit'
@@ -357,8 +366,7 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
             <div style={{ borderBottom: '1px solid var(--color-gray-100)' }}>
               <button
                 onClick={() => {
-                  setSelectedSegment('individuals');
-                  setCurrentPage('phone');
+                      navigate('/phone');
                   setMobileMenuOpen(false);
                 }}
                 style={{
@@ -368,9 +376,9 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: currentPage === 'phone' ? 'var(--text-primary)' : 'var(--text-gray)',
+                  color: isPhoneActive ? 'var(--text-primary)' : 'var(--text-gray)',
                   fontSize: '1rem',
-                  fontWeight: currentPage === 'phone' ? '600' : '500',
+                  fontWeight: isPhoneActive ? '600' : '500',
                   padding: '1rem 0',
                   fontFamily: 'inherit'
                 }}
@@ -380,49 +388,52 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
 
               {/* Phone Submenu Items */}
               <div style={{ paddingLeft: '1rem' }}>
-                {[
-                  { key: 'govt-military', label: 'Government & Military' },
-                  { key: 'business', label: 'Business' },
-                  { key: 'journalists', label: 'Journalists' },
-                  { key: 'individuals', label: 'Individuals' }
-                ].map(item => (
-                  <button
-                    key={item.key}
-                    onClick={() => {
-                      setSelectedSegment(item.key);
-                      setCurrentPage('phone');
-                      setMobileMenuOpen(false);
-                    }}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      textAlign: 'left',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      color: 'var(--text-gray)',
-                      fontSize: '0.9rem',
-                      fontFamily: 'inherit',
-                      padding: '0.75rem 0',
-                      borderBottom: '1px solid var(--color-gray-100)'
-                    }}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+                    {phoneSegments.map(item => {
+                      const path = getPhonePath(item.key);
+                      const isActiveSegment = location.pathname === path;
+
+                      return (
+                        <button
+                          key={item.key}
+                          onClick={() => {
+                        navigate(path);
+                        setMobileMenuOpen(false);
+                      }}
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        textAlign: 'left',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: isActiveSegment ? 'var(--text-primary)' : 'var(--text-gray)',
+                        fontSize: '0.9rem',
+                        fontFamily: 'inherit',
+                        fontWeight: isActiveSegment ? '600' : '500',
+                        padding: '0.75rem 0',
+                        borderBottom: '1px solid var(--color-gray-100)'
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Other Menu Items */}
             {[
-                  { key: 'eos', label: '/e/OS' },
-              { key: 'about', label: 'About' },
-              { key: 'contact', label: 'Contact' }
-            ].map(item => (
+                  { key: 'eos', label: '/e/OS', path: '/eos' },
+                  { key: 'about', label: 'About', path: '/about' },
+                  { key: 'contact', label: 'Contact', path: '/contact' }
+                ].map(item => {
+                  const isActive = location.pathname.startsWith(item.path);
+
+                  return (
               <button
                 key={item.key}
                 onClick={() => {
-                  setCurrentPage(item.key);
+                  navigate(item.path);
                   setMobileMenuOpen(false);
                 }}
                 style={{
@@ -432,17 +443,19 @@ const Header = ({ currentPage, setCurrentPage, setSelectedSegment, isMobile }) =
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: currentPage === item.key ? 'var(--text-primary)' : 'var(--text-gray)',
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-gray)',
                   fontSize: '1rem',
-                  fontWeight: currentPage === item.key ? '600' : '500',
+                  fontWeight: isActive ? '600' : '500',
                   padding: '1rem 0',
                   borderBottom: '1px solid var(--color-gray-100)',
-                  fontFamily: 'inherit'
+                  fontFamily: 'inherit',
+                  textTransform: item.key === 'eos' ? 'none' : 'uppercase'
                 }}
               >
                 {item.label}
               </button>
-            ))}
+              );
+            })}
           </div>
             </motion.div>
           </motion.div>

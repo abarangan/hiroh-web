@@ -7,7 +7,7 @@ import FAQSection from './FAQSection';
 import FinallySection from './FinallySection';
 import TakeBackPrivacySection from './TakeBackPrivacySection';
 
-const HomePage = ({ isMobile, setCurrentPage }) => {
+const HomePage = ({ isMobile }) => {
   const styles = {
     imageSection: {
       position: 'relative',
@@ -27,7 +27,7 @@ const HomePage = ({ isMobile, setCurrentPage }) => {
   };
   return (
     <>
-      <HeroSection setCurrentPage={setCurrentPage} isMobile={isMobile} />
+      <HeroSection isMobile={isMobile} />
       <KeyFeaturesSection isMobile={isMobile} />
       
       <section style={styles.imageSection}>

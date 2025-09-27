@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../../ui/Button';
 import VideoModal from '../../ui/VideoModal';
 
-const HeroSection = ({ setCurrentPage,isMobile }) => {
+const HeroSection = ({ isMobile }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const styles = {

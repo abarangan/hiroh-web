@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
+const JournalistsExtras = ({ isMobile }) => {
+  const navigate = useNavigate();
   const styles = {
     container: {
       maxWidth: '1200px',
@@ -395,7 +397,7 @@ const JournalistsExtras = ({ isMobile, setCurrentPage }) => {
             <p style={styles.ctaSubtitle}>
               HIROH is the first phone designed for journalists, by privacy experts. Make surveillance impossible.
             </p>
-            <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
+            <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
               Request a Demo
             </button>
           </div>

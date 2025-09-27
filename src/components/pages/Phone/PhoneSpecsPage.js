@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ComparisonTable from './ComparisonTable';
 import DetailedSpecsSection from './DetailedSpecsSection';
 import GovtMilitaryExtras from './GovtMilitaryExtras';
@@ -7,8 +8,20 @@ import BusinessExtras from './BusinessExtras';
 import VideoModal from '../../ui/VideoModal';
 import Button from '../../ui/Button';
 
-const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
+const VALID_SEGMENTS = ['govt-military', 'journalists', 'business', 'individuals'];
+
+const PhoneSpecsPage = ({ isMobile }) => {
+  const { segment } = useParams();
+  const navigate = useNavigate();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const currentSegment = VALID_SEGMENTS.includes(segment) ? segment : 'individuals';
+
+  useEffect(() => {
+    if (segment && !VALID_SEGMENTS.includes(segment)) {
+      navigate('/phone', { replace: true });
+    }
+  }, [segment, navigate]);
 
   // Segment configuration data
   const segmentConfig = {
@@ -18,7 +31,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       description: 'Whether you\'re investigating corruption at home or reporting from conflict zones abroad, HIROH ensures your conversations, sources, and data remain untouchable.',
       button: {
         text: 'Protect Your Work',
-        onClick: () => setCurrentPage('contact'),
+        onClick: () => navigate('/contact'),
         style: 'primary'
       }
     },
@@ -65,7 +78,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
   };
 
   // Get current segment configuration
-  const currentConfig = segmentConfig[selectedSegment] || segmentConfig.individuals;
+  const currentConfig = segmentConfig[currentSegment] || segmentConfig.individuals;
 
   return (
     <>
@@ -81,7 +94,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           color: 'var(--text-white)',
           backgroundImage: `
       linear-gradient(135deg, var(--color-black-50) 0%, var(--color-black-30) 100%),
-      url(${process.env.PUBLIC_URL}/images/${getHeroImage(selectedSegment)})
+      url(${process.env.PUBLIC_URL}/images/${getHeroImage(currentSegment)})
     `,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -132,9 +145,9 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         </div>
       </section>
 
-      {selectedSegment === 'govt-military' && <GovtMilitaryExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {selectedSegment === 'journalists' && <JournalistsExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {selectedSegment === 'business' && <BusinessExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
+      {currentSegment === 'govt-military' && <GovtMilitaryExtras isMobile={isMobile} />}
+      {currentSegment === 'journalists' && <JournalistsExtras isMobile={isMobile} />}
+      {currentSegment === 'business' && <BusinessExtras isMobile={isMobile} />}
 
       {/* Common Content for All Segments */}
       {/* Section 1 - What Makes The HIROH Different? */}
