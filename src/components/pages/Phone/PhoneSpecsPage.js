@@ -138,7 +138,15 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
 
       {/* Common Content for All Segments */}
       {/* Section 1 - What Makes The HIROH Different? */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      <section
+        className="section"
+        style={{
+          backgroundColor: 'var(--bg-primary)',
+          color: 'var(--text-primary)',
+          paddingTop: isMobile ? '6rem' : '12rem',
+          paddingBottom: isMobile ? '6rem' : '12rem'
+        }}
+      >
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
           <h2 style={{ textAlign: 'center', color: 'var(--text-primary)', marginBottom: '2rem', fontSize: isMobile ? '2rem' : '2.5rem' }}>
             What Makes The HIROH Different?
@@ -151,6 +159,65 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
               Unlike software toggles, HIROH disables the cameras and microphones at the circuit-level.
               Once disabled with the switch, the circuits cannot be enabled by hackers, ensuring absolute privacy.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 1B - Premium Materials Spotlight */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-white)' }}>
+        <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '0 1rem',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: isMobile ? 'center' : 'stretch',
+            gap: isMobile ? '2rem' : '4rem'
+          }}
+        >
+          <div
+            style={{
+              flex: '1',
+              textAlign: isMobile ? 'center' : 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              minHeight: isMobile ? 'auto' : '600px'
+            }}
+          >
+            <h2 style={{ fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '1.5rem', color: 'var(--text-white-90)' }}>
+              Premium Look And Feel
+            </h2>
+            <p style={{ fontSize: '1.125rem', lineHeight: '1.9', color: 'var(--text-white-90)' }}>
+              For HIROH to be your everyday phone, it had to feel as exceptional as it performs. A 6.67&quot;
+              flagship display, precision-machined aluminum frame, shatter-resistant glass back, and a 108MP
+              main camera come together in a device that is ready for everything you do—while keeping your
+              life private.
+            </p>
+          </div>
+
+          <div
+            style={{
+              flex: isMobile ? 'auto' : '1.1',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: isMobile ? 'auto' : '800px'
+            }}
+          >
+            <img
+              src={`${process.env.PUBLIC_URL}/images/hiroh-poolside.jpg`}
+              alt="HIROH phone with premium finish near poolside"
+              style={{
+                width: '100%',
+                maxWidth: '100%',
+                height: isMobile ? 'auto' : '100%',
+                borderRadius: '1.75rem',
+                boxShadow: '0 28px 50px rgba(0, 0, 0, 0.35)',
+                objectFit: 'cover'
+              }}
+            />
           </div>
         </div>
       </section>

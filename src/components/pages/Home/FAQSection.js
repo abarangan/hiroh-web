@@ -9,7 +9,7 @@ const FAQSection = ({ isMobile }) => {
     },
     {
       q: 'Can I install my own apps?',
-      a: 'Absolutely! HIROH runs the e/OS operating system for a fully "deGoogled" Android-based experience, giving you access to millions of apps while maintaining your privacy.'
+      a: 'Absolutely! HIROH runs the e/OS operating system for a fully "deGoogled" Android-based experience, giving you access to millions of apps while maintaining your privacy. (If you prefer, we can ship the HIROH phone to you loaded with Android 16.)'
     },
     {
       q: 'How does privacy mode work?',
