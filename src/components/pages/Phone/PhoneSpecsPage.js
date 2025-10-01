@@ -288,6 +288,29 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         </div>
       </section>
 
+      {/* Full-size image section */}
+      <section
+        aria-label="HIROH phone in everyday life"
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 0
+        }}
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/images/hiroh-everyday-150.jpg`}
+          alt="HIROH phone in everyday life"
+          style={{
+            width: '100%',
+            height: 'auto',
+            maxWidth: '100%',
+            objectFit: isMobile ? 'cover' : 'contain'
+          }}
+        />
+      </section>
+
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-white)'}}>
         <div>
           <DetailedSpecsSection isMobile={isMobile} />
