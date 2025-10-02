@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import ComparisonTable from './ComparisonTable';
 import DetailedSpecsSection from './DetailedSpecsSection';
 import GovtMilitaryExtras from './GovtMilitaryExtras';
@@ -7,12 +7,14 @@ import JournalistsExtras from './JournalistsExtras';
 import BusinessExtras from './BusinessExtras';
 import VideoModal from '../../ui/VideoModal';
 import Button from '../../ui/Button';
+import ShopSection from '../Shop/ShopSection';
 
 const VALID_SEGMENTS = ['govt-military', 'journalists', 'business', 'individuals'];
 
 const PhoneSpecsPage = ({ isMobile }) => {
   const { segment } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const currentSegment = VALID_SEGMENTS.includes(segment) ? segment : 'individuals';
@@ -22,6 +24,21 @@ const PhoneSpecsPage = ({ isMobile }) => {
       navigate('/phone', { replace: true });
     }
   }, [segment, navigate]);
+
+  // Scroll to shop section if hash is present
+  useEffect(() => {
+    if (location.hash === '#shop') {
+      // Wait for all content to load, then scroll
+      const timer = setTimeout(() => {
+        const shopSection = document.querySelector('[data-shop-section]');
+        if (shopSection) {
+          shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.pathname]);
 
   // Segment configuration data
   const segmentConfig = {
@@ -55,12 +72,17 @@ const PhoneSpecsPage = ({ isMobile }) => {
     individuals: {
       heroImage: 'hiroh-coffee-desk.jpg',
       title: 'The HIROH Phone',
-      description: 'Privacy by design. Security by default. Take back control of your digital life.',
+      description: 'Premium by design. Privacy by default. Take back control of your digital life.',
       button: {
         type: 'dual',
         primary: {
-          text: 'Shop Now',
-          onClick: () => window.open('https://murena.com/shop/smartphones/brand-new/hiroh-phone-powered-by-murena-pre-sale/', '_blank'),
+          text: 'Pre-Order Now',
+          onClick: () => {
+            const shopSection = document.querySelector('[data-shop-section]');
+            if (shopSection) {
+              shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          },
           style: 'primary'
         },
         secondary: {
@@ -145,6 +167,9 @@ const PhoneSpecsPage = ({ isMobile }) => {
         </div>
       </section>
 
+      {/* Shop Section */}
+      <ShopSection isMobile={isMobile} />
+
       {currentSegment === 'govt-military' && <GovtMilitaryExtras isMobile={isMobile} />}
       {currentSegment === 'journalists' && <JournalistsExtras isMobile={isMobile} />}
       {currentSegment === 'business' && <BusinessExtras isMobile={isMobile} />}
@@ -200,7 +225,7 @@ const PhoneSpecsPage = ({ isMobile }) => {
             }}
           >
             <h2 style={{ fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '1.5rem', color: 'var(--text-white-90)' }}>
-              Premium Look And Feel
+              PREMIUM
             </h2>
             <p style={{ fontSize: '1.125rem', lineHeight: '1.9', color: 'var(--text-white-90)' }}>
               For HIROH to be your everyday phone, it had to feel as exceptional as it performs. A 6.67&quot;

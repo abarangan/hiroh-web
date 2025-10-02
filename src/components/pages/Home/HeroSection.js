@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../ui/Button';
 import VideoModal from '../../ui/VideoModal';
 
 const HeroSection = ({ isMobile }) => {
+  const navigate = useNavigate();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const styles = {
@@ -108,7 +110,7 @@ const HeroSection = ({ isMobile }) => {
           </Button>
           <Button
             variant="outline"
-            onClick={() => window.open('https://murena.com/shop/smartphones/brand-new/hiroh-phone-powered-by-murena-pre-sale/', '_blank')}
+            onClick={() => navigate('/phone#shop')}
           >
             Pre-Order Now
           </Button>

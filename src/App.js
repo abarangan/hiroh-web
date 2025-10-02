@@ -13,7 +13,10 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Don't scroll to top if there's a hash (anchor link)
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname, location.search]);
 
   return null;
