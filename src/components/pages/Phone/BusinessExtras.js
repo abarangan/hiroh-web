@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const BusinessExtras = ({ isMobile, setCurrentPage }) => {
+const BusinessExtras = ({ isMobile }) => {
+  const navigate = useNavigate();
   const styles = {
     container: {
       maxWidth: '1200px',
@@ -415,7 +417,7 @@ const BusinessExtras = ({ isMobile, setCurrentPage }) => {
             <p style={styles.ctaSubtitle}>
               HIROH is the ultimate business phone for executives, bankers, and global travelers. When reputation and billions are at stake, trust nothing less.
             </p>
-            <button onClick={() => setCurrentPage('contact')} style={styles.ctaButton}>
+            <button onClick={() => navigate('/contact')} style={styles.ctaButton}>
               Inquiries
             </button>
           </div>

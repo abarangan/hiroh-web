@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import ComparisonTable from './ComparisonTable';
 import DetailedSpecsSection from './DetailedSpecsSection';
 import GovtMilitaryExtras from './GovtMilitaryExtras';
@@ -6,9 +7,38 @@ import JournalistsExtras from './JournalistsExtras';
 import BusinessExtras from './BusinessExtras';
 import VideoModal from '../../ui/VideoModal';
 import Button from '../../ui/Button';
+import ShopSection from '../Shop/ShopSection';
 
-const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
+const VALID_SEGMENTS = ['govt-military', 'journalists', 'business', 'individuals'];
+
+const PhoneSpecsPage = ({ isMobile }) => {
+  const { segment } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const currentSegment = VALID_SEGMENTS.includes(segment) ? segment : 'individuals';
+
+  useEffect(() => {
+    if (segment && !VALID_SEGMENTS.includes(segment)) {
+      navigate('/phone', { replace: true });
+    }
+  }, [segment, navigate]);
+
+  // Scroll to shop section if hash is present
+  useEffect(() => {
+    if (location.hash === '#shop') {
+      // Wait for all content to load, then scroll
+      const timer = setTimeout(() => {
+        const shopSection = document.querySelector('[data-shop-section]');
+        if (shopSection) {
+          shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.pathname]);
 
   // Segment configuration data
   const segmentConfig = {
@@ -18,7 +48,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
       description: 'Whether you\'re investigating corruption at home or reporting from conflict zones abroad, HIROH ensures your conversations, sources, and data remain untouchable.',
       button: {
         text: 'Protect Your Work',
-        onClick: () => setCurrentPage('contact'),
+        onClick: () => navigate('/contact'),
         style: 'primary'
       }
     },
@@ -42,12 +72,17 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
     individuals: {
       heroImage: 'hiroh-coffee-desk.jpg',
       title: 'The HIROH Phone',
-      description: 'Privacy by design. Security by default. Take back control of your digital life.',
+      description: 'Premium by design. Privacy by default. Take back control of your digital life.',
       button: {
         type: 'dual',
         primary: {
-          text: 'Shop Now',
-          onClick: () => window.open('https://murena.com/shop/smartphones/brand-new/hiroh-phone-powered-by-murena-pre-sale/', '_blank'),
+          text: 'Pre-Order Now',
+          onClick: () => {
+            const shopSection = document.querySelector('[data-shop-section]');
+            if (shopSection) {
+              shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          },
           style: 'primary'
         },
         secondary: {
@@ -65,7 +100,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
   };
 
   // Get current segment configuration
-  const currentConfig = segmentConfig[selectedSegment] || segmentConfig.individuals;
+  const currentConfig = segmentConfig[currentSegment] || segmentConfig.individuals;
 
   return (
     <>
@@ -81,7 +116,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
           color: 'var(--text-white)',
           backgroundImage: `
       linear-gradient(135deg, var(--color-black-50) 0%, var(--color-black-30) 100%),
-      url(${process.env.PUBLIC_URL}/images/${getHeroImage(selectedSegment)})
+      url(${process.env.PUBLIC_URL}/images/${getHeroImage(currentSegment)})
     `,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -132,9 +167,12 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         </div>
       </section>
 
-      {selectedSegment === 'govt-military' && <GovtMilitaryExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {selectedSegment === 'journalists' && <JournalistsExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
-      {selectedSegment === 'business' && <BusinessExtras isMobile={isMobile} setCurrentPage={setCurrentPage} />}
+      {/* Shop Section */}
+      <ShopSection isMobile={isMobile} />
+
+      {currentSegment === 'govt-military' && <GovtMilitaryExtras isMobile={isMobile} />}
+      {currentSegment === 'journalists' && <JournalistsExtras isMobile={isMobile} />}
+      {currentSegment === 'business' && <BusinessExtras isMobile={isMobile} />}
 
       {/* Common Content for All Segments */}
       {/* Section 1 - What Makes The HIROH Different? */}
@@ -143,7 +181,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
         style={{
           backgroundColor: 'var(--bg-primary)',
           color: 'var(--text-primary)',
-          paddingTop: isMobile ? '6rem' : '12rem',
+          paddingTop: isMobile ? '0rem' : '0rem',
           paddingBottom: isMobile ? '6rem' : '12rem'
         }}
       >
@@ -187,7 +225,7 @@ const PhoneSpecsPage = ({ isMobile, selectedSegment, setCurrentPage }) => {
             }}
           >
             <h2 style={{ fontSize: isMobile ? '2rem' : '2.5rem', marginBottom: '1.5rem', color: 'var(--text-white-90)' }}>
-              Premium Look And Feel
+              PREMIUM
             </h2>
             <p style={{ fontSize: '1.125rem', lineHeight: '1.9', color: 'var(--text-white-90)' }}>
               For HIROH to be your everyday phone, it had to feel as exceptional as it performs. A 6.67&quot;
