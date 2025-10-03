@@ -243,7 +243,7 @@ const ShopSection = ({ isMobile }) => {
               color: 'var(--color-primary-teal)',
               marginBottom: '2rem'
             }}>
-              ${price.amount} {price.currencyCode}
+              ${parseFloat(price.amount).toFixed(2)} {price.currencyCode}
             </div>
           )}
 
@@ -412,8 +412,8 @@ const ShopSection = ({ isMobile }) => {
             }}>
               <li style={{ marginBottom: '0.5rem' }}>• Pay $99 today to reserve each device</li>
               <li style={{ marginBottom: '0.5rem' }}>• Receive an invoice and payment link for the remaining $900 per device when ready to ship</li>
-              <li style={{ marginBottom: '0.5rem' }}>• Complete payment of $900 to finalize your order</li>
-              <li>• Total price per device: $999 ($99 deposit + $900 balance)</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Complete payment of $900 (plus applicable taxes) to finalize your order</li>
+              <li>• Total price per device: $999</li>
             </ul>
           </div>
 

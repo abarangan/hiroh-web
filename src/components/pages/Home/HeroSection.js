@@ -41,7 +41,7 @@ const HeroSection = ({ isMobile }) => {
       textAlign: isMobile ? 'center' : 'left'
     },
     heroTitle: {
-      fontSize: 'clamp(1.5rem, 8vw, 5rem)',
+      fontSize: 'clamp(2rem, 9vw, 9rem)',
       fontWeight: 'bold',
       color: 'var(--text-white)',
       marginBottom: '1.5rem',
@@ -97,8 +97,7 @@ const HeroSection = ({ isMobile }) => {
 
       <div style={styles.heroContent}>
         <h1 style={styles.heroTitle}>
-          Your Everyday Phone<br />Is Also<br />
-          Your Privacy Phone
+          PRIVACY HAS<br /> A NEW HIROH
         </h1>
 
         <div style={styles.buttonContainer}>

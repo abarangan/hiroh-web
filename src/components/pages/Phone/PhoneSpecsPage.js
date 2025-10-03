@@ -181,7 +181,7 @@ const PhoneSpecsPage = ({ isMobile }) => {
         style={{
           backgroundColor: 'var(--bg-primary)',
           color: 'var(--text-primary)',
-          paddingTop: isMobile ? '6rem' : '12rem',
+          paddingTop: isMobile ? '0rem' : '0rem',
           paddingBottom: isMobile ? '6rem' : '12rem'
         }}
       >
